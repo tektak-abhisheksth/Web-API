@@ -1,0 +1,200 @@
+﻿<div style="float: right;" id="wrapper">
+    <span id="displaySampleSet">
+        @*<img title="Set sample values" src="~/Images/arrowdown.png" style="vertical-align: central" width="20" height="20" alt="Samples" />*@
+        <button type="button" name="b1" style="background:none; border: none;"><i class="glyphicon glyphicon-chevron-down"></i></button>
+    </span>
+    <div id="sampleSet" style="position: absolute; display: none; background-color: lavender; top: 30px; right: 0; width:700px; box-shadow:0 5px 8px rgba(0,0,0,0.5);">
+        <table style="border-collapse: separate; border-spacing: 5px; width: 100%">
+            <tr>
+                <td colspan="2">
+                    <strong>Defaults panel:</strong>
+                    <img onclick="setDefaultValues()" data-trigger="hover" data-toggle="popover" data-placement="left" data-content="Get latest values." src="data:image/png;base64,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" style="vertical-align: central; float: right" width="16" height="16" alt="Update" />
+                </td>
+            </tr>
+            <tr><td width="15%">Auth. Key:</td><td><input data-trigger="hover" data-toggle="popover" data-placement="bottom" data-content="Insert your desired authorization key here. This will be available for all pages. Note that keys having device type ID value of W will not work on other devices. Such tokens should be generated and used on the same device." style="width: 95%" type="text" id="replacetoken" onblur="setUserValues()" /></td></tr>
+            <tr><td>User ID:</td><td><input data-trigger="hover" data-toggle="popover" data-placement="bottom" data-content="The user ID as decoded from the authorization token." style="width: 95%" type="text" id="replaceuserid" readonly="readonly" /></td></tr>
+            <tr><td>User Name:</td><td><input data-trigger="hover" data-toggle="popover" data-placement="bottom" data-content="The user name as decoded from the authorization token." style="width: 95%" type="text" id="replaceusername" readonly="readonly" /></td></tr>
+            <tr><td>User Type ID:</td><td><input data-trigger="hover" data-toggle="popover" data-placement="bottom" data-content="The user type ID as decoded from the authorization token." style="width: 95%" type="text" id="replaceusertypeid" readonly="readonly" /></td></tr>
+            <tr><td>Device Type ID:</td><td><input data-trigger="hover" data-toggle="popover" data-placement="bottom" data-content="The device type ID as decoded from the authorization token." style="width: 95%" type="text" id="replacedevicetypeid" readonly="readonly" /></td></tr>
+            <tr><td>Device ID:</td><td><input data-trigger="hover" data-toggle="popover" data-placement="bottom" data-content="The device ID as decoded from the authorization token." style="width: 95%" type="text" id="replacedeviceid" readonly="readonly" /></td></tr>
+            <tr><td>Token:</td><td><input data-trigger="hover" data-toggle="popover" data-placement="bottom" data-content="The login token as decoded from the authorization token." style="width: 95%" type="text" id="replacelogintoken" readonly="readonly" /></td></tr>
+            <tr><td colspan="2"><hr /></td></tr>
+            <tr>
+                <td colspan="2">
+                    <table style="width: 95%; margin-left: 5%">
+                        <tr>
+                            <td><label data-trigger="hover" data-toggle="popover" data-placement="bottom" data-content="Display APIs, Conventions, developer notes and change logs that are web-specific."><input type="checkbox" id="chkWebSpecific" checked="checked">Show web-only elements</label></td>
+                            <td><label data-trigger="hover" data-toggle="popover" data-placement="bottom" data-content="Display APIs, Conventions, developer notes and change logs that are for mobile devices only."><input type="checkbox" id="chkMobileSpecific" checked="checked">Show mobile-only elements</label></td>
+                            <td><label data-trigger="hover" data-toggle="popover" data-placement="bottom" data-content="Disable color codes."><input type="checkbox" id="chkColorCode">To hell with your color codes!</label></td>
+                        </tr>
+                        <tr id="colorLegends">
+                            <td>
+                                <div style="background-color: #E0F5FF; text-align: center; margin: auto; width: 40%">Web-only</div>
+                            </td>
+                            <td>
+                                <div style="background-color: #FFE6FF; text-align: center; margin: auto; width: 40%">Mobile-only</div>
+                            </td>
+                            <td>
+                                <div style="background-color: #FFFFD8; text-align: center; margin: auto; width: 40%">Both</div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <p></p>
+    </div>
+</div>
+<script>
+    //$("#sampleSet").hide();
+
+    function panelDown() {
+        $("#sampleSet").slideDown('fast');
+    }
+
+    $("#displaySampleSet").mouseover(function () {
+        panelDown();
+    });
+
+    $("#wrapper").mouseleave(function () {
+        $("#sampleSet").slideUp('fast');
+        $('body').focus();
+    });
+
+    function setUserValues() {
+        var auth = $('#replacetoken').val();
+        var base64Matcher = new RegExp("^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$");
+        $('#replaceuserid').val("");
+        $('#replaceusername').val("");
+        $('#replaceusertypeid').val("");
+        $('#replacedevicetypeid').val("");
+        $('#replacedeviceid').val("");
+        $('#replacelogintoken').val("");
+        if (base64Matcher.test(auth)) {
+            try {
+                var dcd = atob(auth);
+                var a = dcd.split(":");
+                var elems = [];
+                var index = 0;
+                for (index = 0; index < 4; ++index) {
+                    elems[index] = a[index];
+                }
+                var did = "";
+                for (index = 4; index < a.length - 1; ++index) {
+                    did += a[index] + ":";
+                }
+                did = did.substring(0, did.length - 1);
+                elems[elems.length] = did;
+                elems[elems.length] = a[a.length - 1];
+
+                if (elems[3] === "W" || elems[3] === "w") {
+                    var obj = new Object();
+                    obj.tip = "Web-created tokens should be only used on the same machine where they are generated. API calls will return unauthorized response if such tokens are used across a different device.";
+                    showTip(obj, 20);
+                    return;
+                }
+
+                $('#replaceuserid').val(elems[0]);
+                $('#replaceusername').val(elems[1]);
+                $('#replaceusertypeid').val(elems[2]);
+                $('#replacedevicetypeid').val(elems[3]);
+                $('#replacedeviceid').val(elems[4]);
+                $('#replacelogintoken').val(elems[5]);
+                $.cookie('replace.token', $('#replacetoken').val(), { expires: 365, path: '/' });
+                $.cookie('replace.userId', $('#replaceuserid').val(), { expires: 365, path: '/' });
+                $.cookie('replace.userName', $('#replaceusername').val(), { expires: 365, path: '/' });
+                $.cookie('replace.userTypeId', $('#replaceusertypeid').val(), { expires: 365, path: '/' });
+                $.cookie('replace.deviceTypeId', $('#replacedevicetypeid').val(), { expires: 365, path: '/' });
+                $.cookie('replace.deviceId', $('#replacedeviceid').val(), { expires: 365, path: '/' });
+                $.cookie('replace.loginToken', $('#replacelogintoken').val(), { expires: 365, path: '/' });
+                replaceValues();
+            } catch (e) {
+                $('#replaceuserid').val("");
+                $('#replaceusername').val("");
+                $('#replaceusertypeid').val("");
+                $('#replacedevicetypeid').val("");
+                $('#replacedeviceid').val("");
+                $('#replacelogintoken').val("");
+            }
+        }
+    }
+
+    function replaceValues() {
+        var auth = $('[name="ko_unique_2"]');
+        if (auth) {
+            auth.val($.cookie('replace.token'));
+            auth.trigger('keydown');
+            var js = $('#requestBody').val();
+            if (js) {
+                js = setNewValue(js, "UserId", $.cookie('replace.userId'), true);
+                js = setNewValue(js, "UserName", $.cookie('replace.userName'));
+                js = setNewValue(js, "UserTypeId", $.cookie('replace.userTypeId'), true);
+                js = setNewValue(js, "DeviceTypeId", $.cookie('replace.deviceTypeId'), true);
+                js = setNewValue(js, "DeviceId", $.cookie('replace.deviceId'));
+                js = setNewValue(js, "LoginToken", $.cookie('replace.loginToken'));
+                js = JSON.stringify(JSON.parse(js), null, 4);
+                $('#requestBody').val(js).trigger('keydown');
+            }
+        }
+    }
+
+    function updateDisplay() {
+        $('#replacetoken').val($.cookie('replace.token'));
+        $('#replaceuserid').val($.cookie('replace.userId'));
+        $('#replaceusername').val($.cookie('replace.userName'));
+        $('#replaceusertypeid').val($.cookie('replace.userTypeId'));
+        $('#replacedevicetypeid').val($.cookie('replace.deviceTypeId'));
+        $('#replacedeviceid').val($.cookie('replace.deviceId'));
+        $('#replacelogintoken').val($.cookie('replace.loginToken'));
+    }
+
+    $(updateDisplay());
+
+    function setDefaultValues() {
+        $.ajax({
+            url: '/Home/GetData',
+            method: "GET",
+            dataType: "json",
+            success: function (data) {
+                if (data.length <= 0)
+                    return;
+                processUpdate(data);
+            },
+            error: function () {
+            }
+        });
+    }
+
+    function processUpdate(data) {
+        setCookies(data);
+        updateDisplay();
+        replaceValues();
+    };
+
+    function setCookies(data) {
+        $.cookie('replace.token', data.key, { expires: 365, path: '/' });
+        $.cookie('replace.userId', data.userId, { expires: 365, path: '/' });
+        $.cookie('replace.userName', data.userName, { expires: 365, path: '/' });
+        $.cookie('replace.userTypeId', data.userTypeId, { expires: 365, path: '/' });
+        $.cookie('replace.deviceTypeId', data.deviceTypeId, { expires: 365, path: '/' });
+        $.cookie('replace.deviceId', data.deviceId, { expires: 365, path: '/' });
+        $.cookie('replace.loginToken', data.loginToken, { expires: 365, path: '/' });
+    }
+
+    //setTimeout(function () {
+    //    setDefaultValues();
+    //}, 1000);
+
+    function setNewValue(data, replaceKey, newValue, castToInt) {
+        if (newValue != null && newValue != "null" && newValue != "undefined") {
+            data = pinch(data, replaceKey, newValue);
+            if (castToInt)
+                data = pinch(data, replaceKey, function (path, key, value) {
+                    return parseInt(value);
+                });
+        }
+        return data;
+    }
+
+    $("[data-toggle='popover']").popover();
+</script>

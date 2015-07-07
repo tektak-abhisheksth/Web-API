@@ -1,0 +1,12 @@
+﻿@using System.Text.RegularExpressions
+@using Utility
+@model API.Areas.HelpPage.ModelDescriptions.EnumTypeModelDescription
+@{
+    var displayName = (new Regex("SYSTEM ", RegexOptions.IgnoreCase)).Replace(Model.Name.AddSpaceBeforeCapitalLetters(), "", 1);
+}
+<div class="collapsible" added="@Model.Added" id="@Model.Name" title="Added: @Model.Added.GetValueOrDefault().ToLongDateString()">
+    @displayName<span></span>
+</div>
+<div class="container" style="display: none">
+    <p>@Html.Partial("~/Areas/HelpPage/Views/Help/DisplayTemplates/EnumTypeModelDescription.cshtml", Model)</p>
+</div>    

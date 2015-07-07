@@ -1,0 +1,814 @@
+﻿@using System
+@using Utility
+<div class="SystemlistStyle1">
+    <p>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2015, 07, 06))
+            <div class="clearfix lft75p">
+                <div>
+                    <div>Added throttling to prevent DOS attacks. Current rate limit is set at @SystemConstants.CallQuotaPerSecond requests per second (see @Html.ActionLink("Dev Notes", "Dev", null, null, null, "throttling", null, null)).</div>
+                </div>
+            </div>
+        </div>
+        <div class="notice" marktype="1">
+            @Html.Partial("_CalendarPartial", new DateTime(2015, 07, 02))
+            <div class="clearfix lft75p">
+                <div>
+                    <div>Added API that accepts data from user to enlist the friends of respective category.</div>
+                </div>
+            </div>
+        </div>
+        <div class="notice" marktype="1">
+            @Html.Partial("_CalendarPartial", new DateTime(2015, 07, 01))
+            <div class="clearfix lft75p">
+                <div>
+                    <div>Added API that accepts list of friends from user to move or copy them to one or more target categories.</div>
+                    <div>Added API that accepts data from user to commit the image.</div>
+                    <div>Added API that accepts data from user to recrop the image.</div>
+                    <div>Added API that accepts file ID for user to roll back the image.</div>
+                </div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2015, 06, 30))
+            <div class="clearfix lft75p">
+                <div>
+                    <div>
+                        Added API that accepts data from user to update the information in <strong>Who viewed your profile</strong> section.
+                    </div>
+                    <div>Added API to enlist web friends.</div>
+                </div>
+            </div>
+        </div>
+        <div class="notice" marktype="1">
+            @Html.Partial("_CalendarPartial", new DateTime(2015, 06, 30))
+            <div class="clearfix lft75p">
+                <div>
+                    <div>Added supplement API for "Forgot Password", that accepts information from the user to reset password.</div>
+                    <div>Added API that provides the list of current user's friends, including pending ones for web only.</div>
+                </div>
+            </div>
+        </div>
+        <div class="notice" marktype="1">
+            @Html.Partial("_CalendarPartial", new DateTime(2015, 06, 26))
+            <div class="clearfix lft75p">
+                <div>
+                    <div>Added API that accepts data from user to activate the user.</div>
+                </div>
+            </div>
+        </div>
+        <div class="notice" marktype="1">
+            @Html.Partial("_CalendarPartial", new DateTime(2015, 06, 25))
+            <div class="clearfix lft75p">
+                <div>
+                    <div>Added API that allows current user to update existing basic information.</div>
+                </div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2015, 06, 18))
+            <div class="clearfix lft75p">
+                <div>
+                    <div>Added API that allows user to update availability status details.</div>
+                    <div>Added @Html.ActionLink("FAQs", "Faqs") page.</div>
+                </div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2015, 06, 17))
+            <div class="clearfix lft75p">
+                <div>
+                    <div>Added API that allows user to obtain availability status details of a given target user.</div>
+                </div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2015, 06, 15))
+            <div class="clearfix lft75p">
+                <div>
+                    <div>Added API that allows user to obtain a list of mutual friends against a given target user.</div>
+                </div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2015, 06, 12))
+            <div class="clearfix lft75p">
+                <div>
+                    <div>Added API that provides user with list of basic information of provided multiple target users.</div>
+                </div>
+            </div>
+        </div>
+        <div class="notice" marktype="1">
+            @Html.Partial("_CalendarPartial", new DateTime(2015, 06, 12))
+            <div class="clearfix lft75p">
+                <div>
+                    <div>Added APIs for returning profile view information.</div>
+                </div>
+            </div>
+        </div>
+        <div class="notice" marktype="1">
+            @Html.Partial("_CalendarPartial", new DateTime(2015, 06, 10))
+            <div class="clearfix lft75p">
+                <div>
+                    <div>Added API that provides the detail list of skill thumbs up provider.</div>
+                    <div>Added API that allows user to accept or reject the suggested skill.</div>
+                </div>
+            </div>
+        </div>
+        <div class="notice" marktype="1">
+            @Html.Partial("_CalendarPartial", new DateTime(2015, 06, 08))
+            <div class="clearfix lft75p">
+                <div>
+                    <div>Added API that provides user with the list of his/her skills.</div>
+                    <div>Added API that allows user to add/edit/delete skills.</div>
+                    <div>Added API that allows user to like friend's skills.</div>
+                    <div style='color: red; text-decoration: line-through'>Added API that provides user with the list of skill thumbs up providers.</div>
+                    <div>Added API that allows user to suggest skills.</div>
+                    <div>Added API that provides the list of unapproved skill suggestions.</div>
+                </div>
+            </div>
+        </div>
+        <div class="notice" marktype="1">
+            @Html.Partial("_CalendarPartial", new DateTime(2015, 06, 04))
+            <div class="clearfix lft75p">
+                <div>
+                    <div>Added API that provides user with basic information of the requested target user.</div>
+                    <div>Added API that provides user with the list of his/her award and honor.</div>
+                    <div>Added API that allows user to add his/her award and honor information.</div>
+                    <div>Added API that allows user to update his/her Allows user to like friend's skills. and honor information.</div>
+                    <div>Added API that allows user to delete his/her award and honor information.</div>
+                    <div>Added API that provides user with the basic profile information of the requested target user.</div>
+                </div>
+            </div>
+        </div>
+        <div class="notice" marktype="1">
+            @Html.Partial("_CalendarPartial", new DateTime(2015, 06, 03))
+            <div class="clearfix lft75p">
+                <div>
+                    <div>Added API that provides user with the list of his/her languages.</div>
+                    <div>Added API that accepts a list of languages with optional proficiency levels.</div>
+                    <div>Added API that provides user with his/her education history.</div>
+                    <div>Added API that allows user to add his/her education history.</div>
+                    <div>Added API that allows user to update his/her education history.</div>
+                    <div>Added API that allows user to delete his/her education history.</div>
+                    <div>Added API that provides user with his/her biography.</div>
+                    <div>Added API that allows user to update his/her biography.</div>
+                </div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2015, 05, 29))
+            <div class="clearfix lft75p">
+                <div>
+                    <div>
+                        Added separate-colored sections representing web, mobile or both (see <a href="#" onmouseover=" panelDown()">Defaults Panel</a>).
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2015, 05, 27))
+            <div class="clearfix lft75p">
+                <div>
+                    <div>Added API that accepts user ID, user name or email address of the user to verify whether the user exists or not.</div>
+                </div>
+            </div>
+        </div>
+        <div class="notice" marktype="1">
+            @Html.Partial("_CalendarPartial", new DateTime(2015, 05, 25))
+            <div class="clearfix lft75p">
+                <div>
+                    <div>Added API that allows user to register business account.</div>
+                </div>
+            </div>
+        </div>
+        <div class="notice" marktype="2">
+            @Html.Partial("_CalendarPartial", new DateTime(2015, 04, 24))
+            <div class="clearfix lft75p">
+                <div>
+                    <div>Added API that pulls basic contact information and contact details for provided users.</div>
+                </div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2015, 04, 03))
+            <div class="clearfix lft75p">
+                <div>
+                    <div>Added API that allows current user to update existing contact settings.</div>
+                </div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2015, 04, 02))
+            <div class="clearfix lft75p">
+                <div>
+                    <div>Added API that enlists the contact settings.</div>
+                    <div>Added API that enlists the contact settings categories.</div>
+                    <div>Added API that enlists the contact settings friends.</div>
+                </div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2015, 03, 31))
+            <div class="clearfix lft75p">
+                <div>
+                    <div>Added API that enlists the count of unread instance messages.</div>
+                </div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2015, 03, 25))
+            <div class="clearfix lft75p">
+                <div>
+                    Added API that allows user to search the message.
+                </div>
+                <div>
+                    Added API that allows user to update the push code.
+                </div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2015, 03, 13))
+            <div class="clearfix lft75p">
+                <div>
+                    Added API that allows current user to update existing basic informations.
+                </div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2015, 03, 12))
+            <div class="clearfix lft75p">
+                <div>
+                    Added API that provides user with suggested contact information of the requested target user.
+                </div>
+                <div>
+                    Added API that allows a user to approve or reject the suggested contact request.
+                </div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2015, 03, 11))
+            <div class="clearfix lft75p">
+                <div>
+                    Added API that allows a user to add a suggestion made to other user's contact, that can be either for simple major fields, for contact chat fields, or for custom fields.
+                </div>
+                <div>
+                    Added API that allows a user to update his/her previous suggestion made to other user's contact, that can be either for simple major fields, for contact chat fields, or for custom fields.
+                </div>
+                <div>
+                    Added API that allows a user to delete his/her previous suggestion made to other user's contact, that can be either for simple major fields, for contact chat fields, or for custom fields.
+                </div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2015, 03, 10))
+            <div class="clearfix lft75p">
+                <div>
+                    Updated response model for contact section of profile's GET.
+                </div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2015, 03, 06))
+            <div class="clearfix lft75p">
+                <div>
+                    Added API that allows to update the profile picture.
+                </div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2015, 03, 03))
+            <div class="clearfix lft75p">
+                <div>
+                    Added API that allows update of any existing contact.
+                </div>
+                <div>
+                    Added API that allows deletion of existing temporary contact.
+                </div>
+                <div>
+                    Added API that allows addition of chat network(s) for a contact.
+                </div>
+                <div>
+                    Added API that allows update of chat network(s) of a contact.
+                </div>
+                <div>
+                    Added API that allows removal of chat network(s) from a contact.
+                </div>
+                <div>
+                    Added API that allows addition of custom field(s) for a contact.
+                </div>
+                <div>
+                    Added API that allows update of custom field(s) of a contact.
+                </div>
+                <div>
+                    Added API that allows removal of custom field(s) from a contact.
+                </div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2015, 02, 25))
+            <div class="clearfix lft75p">
+                <div>
+                    Modified Profile's GET API.
+                </div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2015, 02, 13))
+            <div class="clearfix lft75p">
+                <div>
+                    Added API that allows addition of temporary contact.
+                </div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2015, 02, 12))
+            <div class="clearfix lft75p">
+                <div>
+                    Modified Chat <em>Group Leave</em> API to leave bulk of groups.
+                </div>
+                <div>
+                    Modified Chat <em>Group Delete</em> API to delete bulk of groups.
+                </div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2015, 02, 10))
+            <div class="clearfix lft75p">
+                <div>
+                    Added API that transfers the instance information of the provided instance ID of a particular user.
+                </div>
+                <div>
+                    Added API that transfers the message information of the provided instance ID and message ID of a particular user.
+                </div>
+                <div>
+                    Added API that allows user to update view count and view time limit of the disposable instance.
+                </div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2015, 02, 02))
+            <div class="clearfix lft75p">
+                <div>
+                    Added API that allows user to move instances to a particular inbox.
+                </div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2015, 01, 30))
+            <div class="clearfix lft75p">
+                <div>
+                    Concept of <em>SubStatus</em> added. This is for the propose of providing a contextual elaboration of the <em>Status</em> being returned. Although elaborative error messages are also being returned, the <em>SubStatus</em> aids client apps in better handling the response. The <em>SubStatus</em> can be used to produce some UI response and/or take further appropriate actions (see Response&lt;T&gt; format in @Html.ActionLink("Dev notes", "Dev")).
+                </div>
+                <div>
+                    All chat related exceptions are now handled. Instead of returning service exceptions with 500 responses, 4xx error responses with respective <em>SubStatus</em> (all <em>ExceptionCodes</em> returned from service are returned as <em>SubStatus</em>) and error messages will be returned.
+                </div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2015, 01, 29))
+            <div class="clearfix lft75p">
+                <div>
+                    Modified Notification <em>Count</em> API to filter the nofications and requests based on Notification Type ID and Request Type ID.
+                </div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2015, 01, 28))
+            <div class="clearfix lft75p">
+                <div>Added API that enlists the count of notifications and requests.</div>
+                <div>Reduced the number of request parameters in POST API of Notification.</div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2015, 01, 26))
+            <div class="clearfix lft75p">
+                <div>As per a mobile team's request, added descriptive tooltip on each request and response properties in the information page in API.</div>
+                <div>
+                    Changed <em>Users</em> to <em>Friends</em> in category response.
+                </div>
+                <div>
+                    Changed <em>LoginToken</em> to <em>Token</em> in setting's sign out.
+                </div>
+                <div>
+                    Changed <em>SettingGroup</em> to <em>SettingGroupId</em> in Setting POST.
+                </div>
+                <div>
+                    Changed <em>GroupSettings</em> to <em>GroupS</em> in Group PUT and Group Setting PUT APIs.
+                </div>
+                <div>
+                    Changed <em>SizeCodes</em> to <em>SizeCode</em> in Url Pull and Face Detection APIs.
+                </div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2015, 01, 23))
+            <div class="clearfix lft75p">
+                <div>
+                    <em>Mute</em> status added to Inbox's Get request's response.
+                </div>
+                <div>
+                    Format for <em>Paginated Request</em> standardized for non-GET requests (see @Html.ActionLink("Dev notes", "Dev")).
+                </div>
+                As per a QCed issue, to enforce strong validation scheme, and to adhere to a consistent system structure, all non-GET (PUT/POST/DELETE) requests have their query string parameters shifted to the body.
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2015, 01, 09))
+            <div class="clearfix lft75p">
+                <div>Added multiple devices sign out functionality.</div>
+                <div>Added API that accepts data from user to add or remove chat members.</div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2015, 01, 07))
+            <div class="clearfix lft75p">
+                <div>
+                    Added a <strong>Flush</strong> parameter to Friend/Sync API as per iOS team's request. Setting this flag to <em>true</em> will remove all existing contacts for that user for that device from the server and the set of data sent for addition will be added afresh (see @Html.ActionLink("Dev notes", "Dev")). List of delete entries is idempotent for this case.
+                </div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2015, 01, 06))
+            <div class="clearfix lft75p">
+                <div>Added descriptive error responses to a multitude of responses for cases where response status code is 400 or greater.</div>
+                <div>Added API that accepts specified list of inbox from user to mute/unmute.</div>
+                <div>Added API that accepts data from user to delete specified message(s).</div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2015, 01, 02))
+            <div class="clearfix lft75p">
+                <div>Added API that saves file ID in the server.</div>
+                <div>Modification in Notification API to incorporate both mobile and web.</div>
+                <div>Added support for camel casing the JSON response (see @Html.ActionLink("Dev notes", "Dev")).</div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2014, 12, 26))
+            <div class="clearfix lft75p">
+                <div>Added API that transfers the list of instance of a particular user asynchronously.</div>
+                <div>Added API that transfers the list of messages of a particular instance asynchronously.</div>
+                <div>Added API that provides user with the list of groups asynchronously.</div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2014, 12, 25))
+            <div class="clearfix lft75p">
+                <div>Added API that provides user with the list of file URIs.</div>
+                <div>Added API that provides user with file URI.</div>
+                <div>Added API that accepts data from user to get detection of image on face.</div>
+                <div>Added API that accepts data from user to crop the image.</div>
+                <div>Added API that accepts data from user to delete the files.</div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2014, 12, 24))
+            <div class="clearfix lft75p">
+                <div>Added request tunneling as per iOS team's request (see @Html.ActionLink("Dev notes", "Dev")).</div>
+            </div>
+            <br />
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2014, 12, 10))
+            <div class="clearfix lft75p">
+                <div>Added API that allows user to delete, leave or both leave and delete from the specified instances.</div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2014, 12, 05))
+            <div class="clearfix lft75p">
+                <div>Integrated Setting APIs with kauwa service methods call.</div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2014, 11, 27))
+            <div class="clearfix lft75p">
+                <div>Integrated Inbox and Rule APIs with kauwa service methods call.</div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2014, 11, 26))
+            <div class="clearfix lft75p">
+                <div>Minor modification in the API test panel. Now, developers have the option to report any bug related to specific API in-situ, along with the test data and any additional details (make sure to setup a default email handler program).</div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2014, 11, 25))
+            <div class="clearfix lft75p">
+                <div>Redesigned and remodeled the layout of Web API demo page. Now, detailed model of response object is also displayed, where appropriate.</div>
+                <div>Mandated the requirement of temporary token (to prevent DOS attack) for cases where a user is not signed in or doesn't require or doesn't possess a valid permanent token.</div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2014, 11, 20))
+            <div class="clearfix lft75p">
+                <div>Added tracing support (to monitor, validate and replicate clients' actions) on all requests made by clients and responses sent along with the (JSON/XML) body (see @Html.ActionLink("Trace", "Trace")).</div>
+                <div>Added panel to monitor all exceptions (for admins only). Now, all exceptions can be viewed in detail, and full stack trace will also be mailed to support as exceptions occur.</div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2014, 11, 14))
+            <div class="clearfix lft75p">
+                <div>Implemented new requirement changes in Rule API.</div>
+                <div>Added API that provides user with the option to approve or reject a group member request (only by group admin).</div>
+                <div>Added API that provides user with the list of pending group members.</div>
+                <div>Added API that allows user to remove other non-admin members from the specified group (only by group admin).</div>
+                <div>Added API that provides user with the history of a particular group.</div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2014, 11, 12))
+            <div class="clearfix lft75p">
+                <div>Settings page added to customize the system as per developer's needs (see @Html.ActionLink("Settings", "Settings")).</div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2014, 11, 10))
+            <div class="clearfix lft75p">
+                <div>Formatted JSON response in test server for readability. When in production mode, formatting is removed.</div>
+                <div>Modified JSON Serializer. Changed default serializer to JSON.NET. When in production mode, JSON string will be stripped off any formatting, properties having default values of their respective types will be removed, and properties having null values of nullable types will also be removed (not serialized and sent in the response string to reduce response size) assuming client system will deserialize default values for missing information. These settings are, though, turned off as of now.</div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2014, 11, 07))
+            <div class="clearfix lft75p">
+                <div>Added API that provides user with the list of groups.</div>
+                <div>Added API that provides user with the updated routing list.</div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2014, 11, 06))
+            <div class="clearfix lft75p">
+                <div>Added API that accepts data from user to add a new chat group.</div>
+                <div>Added API that provides user with the list of group members.</div>
+                <div>Added API that accepts data from the user to update the group name.</div>
+                <div>Added API that allows user to delete the specified group.</div>
+                <div>Added API that provides user with information about the group.</div>
+                <div>Added API that allows user to add members in the specified group.</div>
+                <div>Added API that allows user to add setting to the specified group.</div>
+                <div>Added API that provides user with the list of group settings.</div>
+                <div>Added API that allows user to request group admin to add user in the specified group.</div>
+                <div>Added API that allows user to leave specified group.</div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2014, 11, 03))
+            <div class="clearfix lft75p">
+                @*<div>Added API that accepts data from user to insert group GUID for associated group members.</div>
+                    <div>Added API that provides user with list of associated group GUIDs.</div>*@
+                <div>Added API that accepts data from user to block/unblock specified instances.</div>
+                <div>Added API that provides user with list of blocked instances.</div>
+                <div>Added API that accepts data from user to block/unblock specified instances.</div>
+                <div>Added API that provides user with the list of blocked users in the instances.</div>
+                <div>Added API that accepts data from user to mute/unmute specified instances.</div>
+                <div>Added API that provides user with the list of mute instances.</div>
+                @*<div>Added API that accept data from user to insert list of users to mute/unmute.</div>
+                    <div>Added API that provide user with the list of muted users.</div>*@
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2014, 10, 30))
+            <div class="clearfix lft75p">
+                <div>Added API that transfers the list of messages of a particular instance.</div>
+                <div>Added API that transfers the list of instances of a particular user.</div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2014, 10, 25))
+            <div class="clearfix lft75p">
+                <div>Integrated Profile Get APIs with kauwa service methods call.</div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2014, 10, 15))
+            <div class="clearfix lft75p">
+                <div>Integrated Friend APIs with kauwa service methods call.</div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2014, 10, 07))
+            <div class="clearfix lft75p">
+                <div>Integrated Category APIs with kauwa service methods call.</div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2014, 9, 19))
+            <div class="clearfix lft75p">
+                <div>Integrated Register and Login APIs with kauwa service methods call.</div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2014, 9, 10))
+            <div class="clearfix lft75p">
+                <div>Added API that provides user with basic information of the requested target user.</div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2014, 9, 01))
+            <div class="clearfix lft75p">
+                <div>Added API to create inbox's rules.</div>
+                <div>Added API to edit the existing inbox's rules.</div>
+                <div>Added API to delete existing inbox's rules.</div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2014, 8, 29))
+            <div class="clearfix lft75p">
+                <div>Added API to get the list of inbox folders.</div>
+                <div>Added API to create inbox and its corresponding rules.</div>
+                <div>Added API to edit the name of existing inbox folder (except "Primary" folder).</div>
+                <div>Added API to delete existing inbox folders (except "Primary" folder).</div>
+                <div>Added API to get the list of inbox folders' rules.</div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2014, 8, 25))
+            <div class="clearfix lft75p">
+                <div>Modified Delete API of Category as per request.</div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2014, 8, 22))
+            <div class="clearfix lft75p">
+                <div>Added API for user to send web-reset mail in case user forgets the password.</div>
+                <div>Modified APIs for business users. Now all APIs are compatible for business users too.</div>
+                <div>Added user name in API to enlist contacts.</div>
+                <div>Modified profile API to enlist extra information.</div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2014, 8, 21))
+            <div class="clearfix lft75p">
+                <div>Added API to list notifications (including requests).</div>
+                <div>Added users list in the API to pull categories.</div>
+                <div>Removed API used to pull friends list per category.</div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2014, 8, 20))
+            <div class="clearfix lft75p">
+                <div>Added API to change password of the user.</div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2014, 8, 19))
+            <div class="clearfix lft75p">
+                <div>Added properties that determine whether or not contacts allow message forwarding, allow sending connection request and allow adding in chat groups in API to enlist contacts.</div>
+                <div>Remodeled schema of API that enlists friend list.</div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2014, 8, 15))
+            <div class="clearfix lft75p">
+                <div>Added API to enlist user's profile information.</div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2014, 8, 14))
+            <div class="clearfix lft75p">
+                <div>Added user name and user type id in authorization token (see @Html.ActionLink("Dev notes", "Dev")).</div>
+                @*<div>Added data accessor page to ease developer in accessing data (see @Html.ActionLink("Data", "Data")).</div>*@
+                <div>Changed setting value in API that obtain friends' list as per mobile teams request. </div>
+                <div>Added new settings (see @Html.ActionLink("Conventions", "Conventions")).</div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2014, 8, 12))
+            <div class="clearfix lft75p">
+                <div>Added GNU Zip and DEFLATE HTTP compression schemes for request/response (see @Html.ActionLink("Dev notes", "Dev")).</div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2014, 8, 8))
+            <div class="clearfix lft75p">
+                <div>Removed contact APIs to insert and delete phone book contacts.</div>
+                <div>Added API to sync device and server contacts. This API is a special merged functionality of phone book contacts addition, phone book contacts deletion and contact list update/sync, done to reduce three API requests at application startup to just one, as per mobile team's request. This is an exception to the rules mentioned in @Html.ActionLink("Dev notes", "Dev") page.</div>
+                <div>Added device id to authorization token (see @Html.ActionLink("Dev notes", "Dev")).</div>
+                <div>Grouped contact sync response on the basis of friendship status.</div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2014, 8, 6))
+            <div class="clearfix lft75p">
+                <div>Added API to remove registered linked devices from the server.</div>
+                <div>Added API to update user's mobile settings in the server.</div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2014, 8, 5))
+            <div class="clearfix lft75p">
+                <div>Removed APIs to copy/move friends from one category to another.</div>
+                <div>Removed APIs related to profile.</div>
+                <div>
+                    Removed redundant information from <strong>Friends in Category</strong> API.
+                </div>
+                <div>Added API to enlist current mobile settings.</div>
+                <div>Added new conventions (see @Html.ActionLink("Conventions", "Conventions")).</div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2014, 8, 4))
+            <div class="clearfix lft75p">
+                <div>Added API for user to copy friends from one category to one or more of other existing categories.</div>
+                <div>
+                    Made pagination optional in <strong>Friends in Category</strong> and <strong>List Friends</strong> APIs.
+                </div>
+                <div>Added emailing facility for signup.</div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2014, 8, 1))
+            <div class="clearfix lft75p">
+                <div>Added API for user to cancel friend request.</div>
+                <div>Added API for user to search available iLoop users based on the provided search string.</div>
+                <div>Added new conventions (see @Html.ActionLink("Conventions", "Conventions")).</div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2014, 7, 31))
+            <div class="clearfix lft75p">
+                <div>Added APIs for user to add and remove friends in category.</div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2014, 7, 29))
+            <div class="clearfix lft75p">
+                <div>Added API for users to enlist available countries with their respective country codes and zip codes.</div>
+                <div>Added PaginatedResponseExtended&lt;T, I&gt; (see @Html.ActionLink("Dev notes", "Dev")).</div>
+                <div>Added API for user to add, edit and remove category.</div>
+                <div>Added API for user to get the information of user's linked devices.</div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2014, 7, 28))
+            <div class="clearfix lft75p">
+                <div>Bypassed authorization header's requisite for Login.</div>
+                <div>Added APIs for user to add/remove phone book contacts to and from server.</div>
+                <div>Added API to obtain friends' list (including both iLoop web friends and phone book friends).</div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2014, 7, 25))
+            <div class="clearfix lft75p">
+                <div>Added Bluetooth ID and Model Name in user register and login APIs.</div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2014, 7, 24))
+            <div class="clearfix lft75p">
+                <div>Added API for user login.</div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2014, 7, 24))
+            <div class="clearfix lft75p">
+                <div>Added API for users to make a friend request.</div>
+                <div>Added API for users to respond to a friend request.</div>
+                <div>Added API for users to unfriend a friend.</div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2014, 7, 24))
+            <div class="clearfix lft75p">
+                <div>Added API for users to enlist available categories.</div>
+                <div>Added API for users to enlist available friends in respective category.</div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2014, 7, 24))
+            <div class="clearfix lft75p">
+                <div>Added API for users to enlist available chat network types.</div>
+                <div>Added API for users to enlist available nationalities.</div>
+                <div>Added API for users to obtain details of any city by providing city id.</div>
+                <div>Added API for users to enlist available industry types.</div>
+                <div>Added API for users to enlist available languages.</div>
+                <div>Added API for users to enlist available religions.</div>
+                <div>Added API for users to enlist available skills.</div>
+                <div>Added API for users to enlist available towns.</div>
+                <div>Added API for users to enlist available academic concentrations.</div>
+                <div>Added API for users to enlist available academic institutes.</div>
+                <div>Added API for users to enlist available personal user's positions.</div>
+                <div>Added API for users to enlist available departments.</div>
+                <div>Added API for users to enlist company's available departments.</div>
+                <div>Added API for users to enlist company's available departments' employees.</div>
+                <div>Added API for users to enlist company's available products and services.</div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2014, 7, 24))
+            <div class="clearfix lft75p">
+                <div>Added device id bound time-based expiring token to prevent CSRF attack during signup. All signups should request a unique token from the system prior to calling other signup endpoints. A requested token is bound to the server of origin and bound with to the device id of the requested device.</div>
+            </div>
+        </div>
+        <div class="notice" marktype="3">
+            @Html.Partial("_CalendarPartial", new DateTime(2014, 7, 24))
+            <div class="clearfix lft75p">
+                <div>
+                    Re-implemented the database structure to incorporate requirement changes.
+                </div>
+                <div>Versioning of APIs was done to make iLoop APIs future-change proof as features are added and/or changed. Now, all calls will include the version numbers, e.g. api/v1/SignUp. Subsequent versions will follow the same pattern without affecting existing version and its users. </div>
+            </div>
+        </div>
+    </p>
+</div>

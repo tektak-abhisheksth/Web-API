@@ -1,0 +1,271 @@
+﻿@using Utility
+<div class="jumbotron" style="box-shadow: 0 5px 8px rgba(0,0,0,0.5);"><h1 class="engraved" style="color: #B2B2B2">Dev Notes</h1></div>
+This section provides information about how iLoop server has defined the workflow and explains in detail the procedures that consumers need to understand and follow.<br /><br />
+<div class="SystemlistStyle3">
+    <span class="section-title" id="throttling"></span>
+    <div class="notice" marktype="3">
+        @Html.Partial("_CalendarPartial", new DateTime(2015, 07, 03))
+        <div class="clearfix lft75p">
+            Throttling of requests occur if more than @SystemConstants.CallQuotaPerSecond requests (configured in web.config) originate from the same device per second. Additional requests are than rejected with HTTP status code of 429 (Too Many Requests). Client may, however, send further requests after some delay. This is mainly done to prevent request flooding on the server and prevent DOS attacks.
+        </div>
+    </div>
+    <span class="section-title" id="pagination"></span>
+    <div class="notice" marktype="3">
+        @Html.Partial("_CalendarPartial", new DateTime(2015, 01, 23))
+        <div class="clearfix lft75p">
+            All non-GET requests requiring a paginated response from the system should be provided in a general pattern of the given generic type. All paginated request body should have a "Data" object of T type, which holds any information required to produce a paginated result set. PageIndex holds the index of the page being requested and PageSize holds the size of the list to be returned. Since it inherits <em>RequestBase</em> (mentioned below), user ID and device ID fields are also required in the request.
+            <p></p>
+            <pre>
+    public class PaginatedRequest&lt;T&gt; : RequestBase
+    {
+        [Required]
+        public T Data { get; set; }
+        [Required, Range(0, int.MaxValue)]
+        public int PageIndex { get; set; }
+        [Required, Range(0, 100)]
+        public int PageSize { get; set; }
+    }
+                </pre>
+        </div>
+    </div>
+    <span class="section-title" id="casing"></span>
+    <div class="notice" marktype="3">
+        @Html.Partial("_CalendarPartial", new DateTime(2015, 01, 02))
+        <div class="clearfix lft75p">
+            Response can be requested in camel case by stating it in the header. Any request sent with an optional header key <strong>Format</strong> and value "C" will override the default setting and the response's properties will be received in camel case. Sending a camel case request via request header (Format = "C" in the header) will effectively override the default setting for case as specified in @Html.ActionLink("Settings", "Settings"). Request is case-insensitive.
+        </div>
+    </div>
+    <span class="section-title" id="tunneling"></span>
+    <div class="notice" marktype="3">
+        @Html.Partial("_CalendarPartial", new DateTime(2014, 12, 24))
+        <div class="clearfix lft75p">
+            Request can be overridden via implicitly stating the request verb in the request URI itself. For example, a <strong>POST</strong> request on API <strong>api/v1/Friend</strong> can now be made a <strong>DELETE</strong> request by appending "/DELETE" at the end. So, any request on <strong>api/v1/Friend/Delete</strong> will be treated as a <strong>DELETE</strong> request regardless of the request type itself. Similarly, any type of request made on <strong>api/v1/Inbox/Rules/Delete?messageRuleId=2</strong> (current default <strong>DELETE</strong> request URI is <strong>api/v1/Inbox/Rules?messageRuleId=2</strong>) will be treated as a <strong>DELETE</strong> request.
+            <p>&nbsp;</p>
+            <div class="datagrid">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Request Verb</th>
+                            <th>Default Request URI</th>
+                            <th>Tunneled Request URI</th>
+                            <th>Final Request Verb</th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td>POST</td>
+                        <td><a href="~/Help/Api/POST-api-v1-Friend">api/v1/Friend</a></td>
+                        <td></td>
+                        <td>POST</td>
+                    </tr>
+                    <tr class="alt">
+                        <td>
+                            POST
+                        </td>
+                        <td></td>
+                        <td><a href="/Help/Api/DELETE-api-v1-Friend">api/v1/Friend/Delete</a></td>
+                        <td>DELETE</td>
+                    </tr>
+                    <tr>
+                        <td>PUT</td>
+                        <td><a href="/Help/Api/PUT-api-v1-Category-CategoryFriends">api/v1/Category/CategoryFriends</a></td>
+                        <td></td>
+                        <td>PUT</td>
+                    </tr>
+                    <tr class="alt">
+                        <td>PUT</td>
+                        <td></td>
+                        <td><a href="/Help/Api/DELETE-api-v1-Category-CategoryFriends">api/v1/Category/CategoryFriends/Delete</a></td>
+                        <td>DELETE</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <span class="section-title" id="report"></span>
+    <div class="notice" marktype="3">
+        @Html.Partial("_CalendarPartial", new DateTime(2014, 12, 1))
+        <div class="clearfix lft75p">
+            Report a bug option feature allows to report any bug related to specific API in-situ, in demo site (when testing API via "Try it!"), along with the test data and any additional details (make sure to setup a default email handler program).
+        </div>
+
+    </div>
+    <span class="section-title" id="trace"></span>
+    <div class="notice" marktype="3">
+        @Html.Partial("_CalendarPartial", new DateTime(2014, 11, 21))
+        <div class="clearfix lft75p">
+            The Trace support helps observe clients' activities. Developer can view client's request, validate request data, and replicate the scenario with client's data.
+        </div>
+    </div>
+    <span class="section-title" id="adminpanel"></span>
+    <div class="notice" marktype="3">
+        @Html.Partial("_CalendarPartial", new DateTime(2014, 11, 12))
+        <div class="clearfix lft75p">
+            The @Html.ActionLink("Settings", "Settings") panel can be used for customization of system as per developers' needs and agreements. Options such as system token expiry time, trimming of null and/or default values to reduce serialized stream's size, system's default date format changed, among others can be customized.
+        </div>
+    </div>
+    <span class="section-title" id="compression"></span>
+    <div class="notice" marktype="3">
+        @Html.Partial("_CalendarPartial", new DateTime(2014, 8, 12))
+        <div class="clearfix lft75p">
+            System supports GNU Zip and DEFLATE compressions for client-server communication compression scheme negotiation. To reduce valuable bandwidth usages, clients supporting one or both compression schemes in their request/response can request content to be compressed via sending special HTTP header "<strong>Accept-Encoding</strong>" with values as "<strong>identity</strong>" (the default, and means apply no compression), "<strong>gzip</strong>", "<strong>deflate</strong>", or "<strong>gzip, deflate</strong>". Upon requesting any compression scheme(s), server will include a response HTTP header "<strong>Content-Encoding</strong>" with current compression scheme(s) used to compress body content. Compression is optional, depending upon the value or presence of respective request header. Compression is beneficial mostly for long response text body and not for short texts and image/audio/video types. Browsers may override "<strong>Accept-Encoding</strong>" to one of the above compression methods, regardless of what header was entered.
+        </div>
+    </div>
+    <span class="section-title" id="paginationextended"></span>
+    <div class="notice" marktype="3">
+        @Html.Partial("_CalendarPartial", new DateTime(2014, 7, 29))
+        <div class="clearfix lft75p">
+            To extend PaginatedResponse&lt;T&gt;, PaginatedResponseExtended&lt;T, I&gt; can be used. This holds an "Information" entry of I type that contains additional information and/or meta data that supplements the PaginatedResponse&lt;T&gt;.
+            <p></p>
+            <pre>
+    public class PaginatedResponseExtended&lt;T, I&gt; : PaginatedResponse&lt;T&gt;
+    {
+        public I Information { get; set; }
+    }
+                </pre>
+        </div>
+    </div>
+    <span class="section-title" id="paginatedresponse"></span>
+    <div class="notice" marktype="3">
+        @Html.Partial("_CalendarPartial", new DateTime(2014, 7, 24))
+        <div class="clearfix lft75p">
+            PaginatedResponse results from the system will be provided in a general pattern of the given generic type. All paginated responses will have a "Page" object of T type, which contains the actual paginated list of data. HasNextPage is an indicator as to whether or not a next page is available. The paginated PaginatedResponse&lt;T&gt; entity replaces the T type of "Data" to PaginatedResponse&lt;T&gt; in Response&lt;T&gt; in the response, so the response format will remain the same (Response&lt;T&gt;).
+            <p></p>
+            <pre>
+    public class PaginatedResponse&lt;T&gt;
+    {
+        public T Page { get; set; }
+        public bool HasNextPage { get; set; }
+    }
+                </pre>
+        </div>
+
+    </div>
+    <span class="section-title" id="response"></span>
+    <div class="notice" marktype="3">
+        @Html.Partial("_CalendarPartial", new DateTime(2014, 7, 24))
+        <div class="clearfix lft75p">
+            Response from the system will be provided in a general pattern of the given generic type. All responses will have a "Status" code set, which is redundantly the same as HTML response status code. Depending upon response status code, either Data (of any generic type T) or Error (string containing error detail) will be populated. Also, a "SubStatus" code, representing a contextual elaboration of the "Status" is sent based on which an appropriate message can be displayed or any potential further action on the client side can be taken.
+            <p></p>
+            <pre>
+    public class Response&lt;T&gt; where T : class
+    {
+        [Required]
+        public int Status { get; set; }
+        public T Data { get; set; }
+        public string Error { get; set; }
+        public int SubStatus { get; set; }
+    }
+                </pre>
+        </div>
+    </div>
+    <span class="section-title" id="encoding"></span>
+    <div class="notice" marktype="3">
+        @Html.Partial("_CalendarPartial", new DateTime(2014, 7, 24))
+        <div class="clearfix lft75p">
+            Requests can be in JSON, XML or Url-encoded (for special cases as in images/videos). Clients are requested to populate header with appropriate "<strong>Content-Type</strong>" header. If the respective header isn't found, iLoop server will automatically intercept the header and add "application/json" before proceeding ahead in the pipeline (as we believe JSON is more appropriate then default type of form-urlencoded data).
+        </div>
+
+    </div>
+    <span class="section-title" id="formats"></span>
+    <div class="notice" marktype="3">
+        @Html.Partial("_CalendarPartial", new DateTime(2014, 7, 24))
+        <div class="clearfix lft75p">
+            Responses can be in JSON or XML (unless explicitly requested by client). Clients are requested to populate header with appropriate "<strong>Accept</strong>" header for content negotiation. If the respective header isn't found, iLoop server will default to returning JSON type.
+        </div>
+
+    </div>
+    <span class="section-title" id="headermethods"></span>
+    <div class="notice" marktype="3">
+        @Html.Partial("_CalendarPartial", new DateTime(2014, 7, 24))
+        <div class="clearfix lft75p">
+            Clients are required to appropriately use the HTTP Header methods. Same API being called with different HTTP methods will either cause it to behave differently, or respond with a BadRequest (HTTP Status 400) if the API doesn't support that method. iLoop supports the following method types:
+            <br />
+            <ul class="SystemlistStyle2">
+                <li><strong>GET</strong>: Obtain resource(s) from the server</li>
+                <li><strong>POST</strong>: Update existing resource(s), and in specified cases, inserts only new data in the server.</li>
+                <li><strong>DELETE</strong>: Delete resource(s) requested from the server (this request supports the provision of sending data in the body).</li>
+                <li><strong>PUT</strong>: Add new resource(s) in the server, and in specified cases, flush existing related resource(s) before addition.</li>
+            </ul>
+        </div>
+    </div>
+    <span class="section-title" id="validationerror"></span>
+    <div class="notice" marktype="3">
+        @Html.Partial("_CalendarPartial", new DateTime(2014, 7, 24))
+        <div class="clearfix lft75p">
+            Server-side validation will be performed early in the request processing chain. Any validation error encountered will be responded in the Response&lt;T&gt; JSON/XML in the "Error" property.
+        </div>
+    </div>
+    <span class="section-title" id="authorization"></span>
+    <div class="notice" marktype="3">
+        @Html.Partial("_CalendarPartial", new DateTime(2014, 7, 24))
+        <div class="clearfix lft75p">
+            Authorization, if required, will require a base64 encoded string in the "<strong>Authorization</strong>" header of the format {userid:username:usertypeid:devicetypeid:deviceid:token} (without braces). All authorization requiring requests in iLoop, with the exception of those requests that are using GET method (having no body), inherit from the base class RequestBase, which has required properties "UserId" and "DeviceId". Thus, all requests (except for cases when user is new and/or hasn't signed in to the system) require client to send system generated user identity code and his/her persistent device ID. The base64 encoded token will be cached for @SystemConstants.CacheExpiryTimeInMinutes minutes after authentication so that it won't be validated against database each time a request is made.
+        </div>
+    </div>
+    <span class="section-title" id="useridentity"></span>
+    <div class="notice" marktype="3">
+        @Html.Partial("_CalendarPartial", new DateTime(2014, 7, 24))
+        <div class="clearfix lft75p">
+            The system generated user ID, device ID and login token should be sent in the header across all subsequent requests along with user name and user type ID, as of now. User ID refers to any numeric value that uniquely identifies the user in the system, albeit registered devices can be many. A unique device ID refers to any token that is unique to each device and can be produced the same each time it is requested, even after resets. iLoop server requires each device to generate a consistent and unique identification token. Login token, on the other hand, is a proof that the user has something that was provided by the server at some point earlier and also that the user is who he/she says he/she is via a registered device. Login tokens might be regenerated each time user requests login approval from the same device (provision still not finalized), and are separate for multiple devices pertaining to the same user ID. Device Type ID refers to a letter representing whether the system is Android, iOS, or Web.
+        </div>
+    </div>
+    <span class="section-title" id="temptoken"></span>
+    <div class="notice" marktype="3">
+        @Html.Partial("_CalendarPartial", new DateTime(2014, 7, 24))
+        <div class="clearfix lft75p">
+            When not signed-in, the client's device is required to send its unique identification code. Based on the code, server will generate a time-based expiry token, called <strong>"Temporary Token"</strong>. This token will expire in @SystemConstants.TemporaryTokenExpiryTimeInMinutes minute(s) after being created (change this time from @Html.ActionLink("Settings", "Settings")). When sending the sign up form, client is expected to send the same token in the "Authorization" header to ensure that the next request originated from the same device. Failing to sign up within the provided timeframe will revoke the rights provided by the system. As such, client is required to enquire next token.
+        </div>
+    </div>
+    <span class="section-title" id="requestbase"></span>
+    <div class="notice" marktype="3">
+        @Html.Partial("_CalendarPartial", new DateTime(2014, 7, 24))
+        <div class="clearfix lft75p">
+            Once logged in with valid user name and password, server will respond with a user identity code and login token. All subsequent requests, as of now, are required to provide a base64 encoded version of the same in {userid:username:usertypeid:devicetypeid:deviceid:token} (without brackets) format in the "Authorization" header. Server will decrypt, and authenticate against the cache or database. The system provided user identity code and device ID are mandated in the request body for all subsequent requests (except GET requests having no request body). Server will make a comparison of the user identity code and device ID sent in the Authorization header with that sent in the request body before making a check in the database to prevent unwanted database reads and prevent any forgeries.
+            <p></p>
+            <pre>
+    public class RequestBase : RequestBaseAnonymous
+    {
+        [Required, Range(1, int.MaxValue)]
+        public int UserId { get; set; }
+    }
+</pre>
+        </div>
+    </div>
+    <span class="section-title" id="requestbaseanonymous"></span>
+    <div class="notice" marktype="3">
+        @Html.Partial("_CalendarPartial", new DateTime(2014, 7, 24))
+        <div class="clearfix lft75p">
+            Almost all open APIs (where user has not logged in yet and so no authorization token is available) require user to request a temporary token first. Server will decrypt, and authenticate against the token, each open API request. The device ID is mandatory in the request body for all subsequent requests (or as a query parameter for GET requests having no request body). Server will make a comparison of the device ID sent in the Authorization header with that sent in the request body (or query-string) before making a check in the database to prevent unwanted database reads and prevent any forgeries.
+            <p></p>
+            <pre>
+    public class RequestBaseAnonymous
+    {
+        [Required, StringLength(200, MinimumLength = 10)]
+        public string DeviceId { get; set; }
+    }
+</pre>
+        </div>
+    </div>
+    <span class="section-title" id="headers"></span>
+    <div class="notice" marktype="3">
+        @Html.Partial("_CalendarPartial", new DateTime(2014, 7, 24))
+        <div class="clearfix lft75p">
+            HTTP headers, if not present, are appended via iLoop server. But developers are encouraged to make it a habit of sending appropriate headers to relief server from the burden of extra verification. Also, when sending requests from browser (which essentially is just another client to the server similar to the mobile apps), few headers are automatically added before HTTP request is sent to the server. Developers seeing invalid format exception was because the browsers such as Firefox/Chrome added "Content-Type" header to every test requests sent via "Try it!" pages. As of now, JSON formatters are appended to treat "text/plain" and "text/html" requests as having JSON contents (this can be changed without any notice).
+        </div>
+    </div>
+</div>
+<span class="section-title" id="devnote"></span>
+<div class="notice" marktype="3">
+    @Html.Partial("_CalendarPartial", new DateTime(2014, 7, 24))
+    <div class="clearfix lft75p">
+        Note to Web API developers: Developers are only required to decorate their model classes with appropriate attributes and the system will automatically handle validation and response population (intercept the request, validate and in case of any error, respond immediately with Response&lt;T&gt; format with "Error" property populated in the response). Code will not reach developer’s methods/actions if any validation fails. The same is true for exceptions. So, developers won't need to be bothered to implement try-catch blocks and basic validation logic implementation in their methods. For custom validations, code helper extensions in the <span style="font-style: italic">Utility.Validation</span> extensions library. For advanced scenarios, the <span style="font-style: italic">DAL</span> should check to see remaining validations (those that passed through automatic validations) against the persistent data storage layer and should return appropriate <span style="font-style: italic">SystemDbStatus</span> to the caller <span style="font-style: italic">BLL</span> layer. The database is also configured to be the last validator for crucial cases, returning status codes confirming to SystemDbStatus, which DAL can safely return. The <span style="font-style: italic">Extensions.SystemResponse&lt;T&gt;</span> extension method will automatically handle populating the rest of the data in Response&lt;T&gt; format. Developer should adhere to always using the same.<br />
+        Exception will be logged and can be viewed (admins only). Full stack trace will be displayed along with other relevant information. Details will also be mailed immediately (admins only) as exceptions occur.
+    </div>
+</div>
+<p>&nbsp;</p>
+<div>
+    Please report any bugs and/or changes to <a title="If your browser is setup for email, clicking here will let you send us an email." href="mailto:indira.sapkota@tektak.com?subject= About Web API&amp;cc=Abhisheksth@tektak.com">Web API team</a>.
+</div>
+<p>&nbsp;</p>
+@{ Disqus.Initialize("iloopwebapi"); }
+@Disqus.ShowComments("dev")

@@ -1,0 +1,27 @@
+@using Utility
+@model API.Areas.HelpPage.ModelDescriptions.ModelDescription
+@{
+    ViewBag.Title = "iLoop APIs";
+}
+<link type="text/css" href="~/Areas/HelpPage/HelpPage.css" rel="stylesheet"/>
+<header>
+    <div class="content-wrapper">
+        <div class="jumbotron" style="box-shadow: 0 5px 8px rgba(0,0,0,0.5);">
+            <h1 class="engraved" style="color: #B2B2B2">APIs</h1>
+        </div>
+    </div>
+</header>
+<div id="body" class="help-page">
+    @*<section class="featured">
+        <div class="content-wrapper">
+            <p>
+                @Html.ActionLink("Help Page Home", "Index")
+            </p>
+        </div>
+    </section>*@
+    <h1>@Model.Name.AddSpaceBeforeCapitalLetters()</h1>
+    <p>@Model.Documentation</p>
+    <section class="content-wrapper main-content clear-fix">
+        @Html.DisplayFor(m => Model)
+    </section>
+</div>

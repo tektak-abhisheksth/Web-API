@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0878257124e64f319873812c27e92beb" Name="iLoop" ShowGrid="true" ZoomLevel="55" DisplayType="true">
+        <EntityTypeShape EntityType="iLoopModel.Country" Width="1.5" PointX="3.75" PointY="65.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="iLoopModel.ChatNetwork" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="iLoopModel.Proficiency" Width="1.5" PointX="6" PointY="72.25" />
+        <EntityTypeShape EntityType="iLoopModel.City" Width="1.5" PointX="17.25" PointY="45.625" />
+        <EntityTypeShape EntityType="iLoopModel.EmployeeType" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="iLoopModel.EmployerType" Width="1.5" PointX="12" PointY="37.25" />
+        <EntityTypeShape EntityType="iLoopModel.Industry" Width="1.5" PointX="6" PointY="57.625" />
+        <EntityTypeShape EntityType="iLoopModel.Language" Width="1.5" PointX="6" PointY="69.625" />
+        <EntityTypeShape EntityType="iLoopModel.Location" Width="1.5" PointX="8.25" PointY="66.625" />
+        <EntityTypeShape EntityType="iLoopModel.LocationTemporary" Width="1.5" PointX="10.5" PointY="67.875" />
+        <EntityTypeShape EntityType="iLoopModel.LocationType" Width="1.5" PointX="6" PointY="77.25" />
+        <EntityTypeShape EntityType="iLoopModel.Nationality" Width="1.5" PointX="12" PointY="39.75" />
+        <EntityTypeShape EntityType="iLoopModel.OwnershipType" Width="1.5" PointX="6" PointY="55.25" />
+        <EntityTypeShape EntityType="iLoopModel.Position" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="iLoopModel.SkillType" Width="1.5" PointX="9" PointY="50.875" />
+        <EntityTypeShape EntityType="iLoopModel.Town" Width="1.5" PointX="6" PointY="74.625" />
+        <EntityTypeShape EntityType="iLoopModel.UserLanguage" Width="1.5" PointX="8.25" PointY="63.625" />
+        <EntityTypeShape EntityType="iLoopModel.UserSkill" Width="1.5" PointX="11.25" PointY="59.5" />
+        <AssociationConnector Association="iLoopModel.FK_City_Country" />
+        <AssociationConnector Association="iLoopModel.FK_Location_City" />
+        <AssociationConnector Association="iLoopModel.FK_Location_Country" />
+        <AssociationConnector Association="iLoopModel.FK_UserLanguage_Language" />
+        <AssociationConnector Association="iLoopModel.FK_Location_LocationType" />
+        <AssociationConnector Association="iLoopModel.FK_Location_Town" />
+        <AssociationConnector Association="iLoopModel.FK_LocationTemporary_Location" />
+        <AssociationConnector Association="iLoopModel.FK_UserLanguage_Proficiency" />
+        <AssociationConnector Association="iLoopModel.FK_UserSkill_SkillType" />
+        <EntityTypeShape EntityType="iLoopModel.RelationshipStatu" Width="1.5" PointX="12" PointY="34.625" />
+        <EntityTypeShape EntityType="iLoopModel.Religion" Width="1.5" PointX="12" PointY="43.25" />
+        <EntityTypeShape EntityType="iLoopModel.RelationShipType" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="iLoopModel.StatusType" Width="1.5" PointX="9" PointY="71.875" />
+        <EntityTypeShape EntityType="iLoopModel.ThumbsForUserSkill" Width="1.5" PointX="8.25" PointY="106.125" />
+        <EntityTypeShape EntityType="iLoopModel.CompanyUserRating" Width="1.5" PointX="16.5" PointY="61.375" />
+        <EntityTypeShape EntityType="iLoopModel.CompanyDepartment" Width="1.5" PointX="15.5" PointY="54.5" />
+        <EntityTypeShape EntityType="iLoopModel.CompanyDepartmentEmployee" Width="1.5" PointX="19.5" PointY="61.375" />
+        <EntityTypeShape EntityType="iLoopModel.Department" Width="1.5" PointX="13.25" PointY="50.75" />
+        <AssociationConnector Association="iLoopModel.FK_CompanyDepartment_Department" />
+        <AssociationConnector Association="iLoopModel.FK_CompanyDepartmentEmployee_Department" />
+        <EntityTypeShape EntityType="iLoopModel.UserCategoryFriend" Width="1.5" PointX="10.5" PointY="85.875" />
+        <EntityTypeShape EntityType="iLoopModel.UserCategory" Width="1.5" PointX="8.25" PointY="108.625" />
+        <AssociationConnector Association="iLoopModel.FK_UserCategoryFriend_UserCategory" />
+        <EntityTypeShape EntityType="iLoopModel.Friend" Width="1.5" PointX="8.25" PointY="111.5" />
+        <EntityTypeShape EntityType="iLoopModel.UserMobileContact" Width="1.5" PointX="3" PointY="88.625" />
+        <EntityTypeShape EntityType="iLoopModel.Status" Width="1.5" PointX="11.25" PointY="63.125" />
+        <AssociationConnector Association="iLoopModel.FK_Status_StatusType" />
+        <EntityTypeShape EntityType="iLoopModel.UserMultiLogin" Width="1.5" PointX="3" PointY="62" />
+        <EntityTypeShape EntityType="iLoopModel.UserInfoCompany" Width="1.5" PointX="8.25" PointY="57.375" />
+        <EntityTypeShape EntityType="iLoopModel.UserInfoPerson" Width="1.5" PointX="14.25" PointY="61.875" />
+        <AssociationConnector Association="iLoopModel.FK_CompanyDepartment_UserInfoCompany" />
+        <AssociationConnector Association="iLoopModel.FK_CompanyDepartment_UserInfoCompany1" />
+        <AssociationConnector Association="iLoopModel.FK_CompanyDepartmentEmployee_UserInfoCompany" />
+        <AssociationConnector Association="iLoopModel.FK_CompanyDepartmentEmployee_UserInfoPerson" />
+        <AssociationConnector Association="iLoopModel.FK_CompanyUserRating_UserInfoCompany" />
+        <AssociationConnector Association="iLoopModel.FK_CompanyUserRating_UserInfoPerson" />
+        <AssociationConnector Association="iLoopModel.FK_UserInfoPerson_EmployerType" />
+        <AssociationConnector Association="iLoopModel.FK_UserInfoCompany_Industry" />
+        <AssociationConnector Association="iLoopModel.FK_UserInfoPerson_Industry" />
+        <AssociationConnector Association="iLoopModel.FK_UserInfoPerson_Nationality" />
+        <AssociationConnector Association="iLoopModel.FK_UserInfoCompany_Ownership" />
+        <AssociationConnector Association="iLoopModel.FK_UserInfoPerson_RelationshipStatus" />
+        <AssociationConnector Association="iLoopModel.FK_UserInfoPerson_Religion" />
+        <EntityTypeShape EntityType="iLoopModel.SettingPerson" Width="1.5" PointX="19.5" PointY="64.5" />
+        <EntityTypeShape EntityType="iLoopModel.SettingReferencePerson" Width="1.5" PointX="4.75" PointY="0.75" />
+        <AssociationConnector Association="iLoopModel.FK_SettingPerson_UserInfoPerson" />
+        <EntityTypeShape EntityType="iLoopModel.SettingCompany" Width="1.5" PointX="13.5" PointY="58.5" />
+        <EntityTypeShape EntityType="iLoopModel.SettingReferenceCompany" Width="1.5" PointX="4.75" PointY="3.75" />
+        <AssociationConnector Association="iLoopModel.FK_SettingCompany_UserInfoCompany" />
+        <EntityTypeShape EntityType="iLoopModel.SettingTypeCompany" Width="1.5" PointX="11.25" PointY="46.125" />
+        <EntityTypeShape EntityType="iLoopModel.SettingTypePerson" Width="1.5" PointX="17.25" PointY="50.125" />
+        <AssociationConnector Association="iLoopModel.FK_SettingCompany_SettingTypeCompany" />
+        <AssociationConnector Association="iLoopModel.FK_SettingPerson_SettingTypePerson" />
+        <EntityTypeShape EntityType="iLoopModel.NotificationType" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="iLoopModel.Request" Width="1.5" PointX="10.5" PointY="81.5" />
+        <EntityTypeShape EntityType="iLoopModel.RequestType" Width="1.5" PointX="8.25" PointY="82.375" />
+        <AssociationConnector Association="iLoopModel.FK_Request_RequestType" />
+        <EntityTypeShape EntityType="iLoopModel.MessageEntryContact" Width="1.5" PointX="8.25" PointY="53.375" />
+        <EntityTypeShape EntityType="iLoopModel.MessageFolder" Width="1.5" PointX="8.25" PointY="94" />
+        <EntityTypeShape EntityType="iLoopModel.UserLogin" Width="1.5" PointX="0.75" PointY="61.75" />
+        <AssociationConnector Association="iLoopModel.FK_UserMobileContacts_UserLogin" />
+        <AssociationConnector Association="iLoopModel.FK_UserMultiLogin_UserLogin" />
+        <EntityTypeShape EntityType="iLoopModel.UserInfo" Width="1.5" PointX="6" PointY="61.125" />
+        <AssociationConnector Association="iLoopModel.FK_UserInfo_Country" />
+        <AssociationConnector Association="iLoopModel.FK_Friend_User" />
+        <AssociationConnector Association="iLoopModel.FK_Friend_UserInfo" />
+        <AssociationConnector Association="iLoopModel.FK_Location_User" />
+        <AssociationConnector Association="iLoopModel.FK_MessageFolder_UserInfo" />
+        <AssociationConnector Association="iLoopModel.FK_Request_User" />
+        <AssociationConnector Association="iLoopModel.FK_Request_UserInfo" />
+        <AssociationConnector Association="iLoopModel.FK_Status_User" />
+        <AssociationConnector Association="iLoopModel.FK_Status_UserInfo" />
+        <AssociationConnector Association="iLoopModel.FK_UserCategory_UserInfo" />
+        <AssociationConnector Association="iLoopModel.FK_UserCategoryFriend_UserInfo" />
+        <AssociationConnector Association="iLoopModel.FK_UserCategoryFriend_UserInfo1" />
+        <AssociationConnector Association="iLoopModel.FK_MessageEntryContact_UserInfo" />
+        <AssociationConnector Association="iLoopModel.FK_ThumbsForUserSkill_UserInfo" />
+        <AssociationConnector Association="iLoopModel.FK_UserInfo_UserLogin" />
+        <AssociationConnector Association="iLoopModel.FK_UserInfoCompany_UserInfo" />
+        <AssociationConnector Association="iLoopModel.FK_UserInfoPersonal_UserInfo" />
+        <AssociationConnector Association="iLoopModel.FK_UserLanguage_UserInfo" />
+        <AssociationConnector Association="iLoopModel.FK_UserSkill_UserInfo" />
+        <EntityTypeShape EntityType="iLoopModel.MessageRule" Width="1.5" PointX="10.5" PointY="93.625" />
+        <AssociationConnector Association="iLoopModel.FK_MessageRule_MessageFolder" />
+        <EntityTypeShape EntityType="iLoopModel.MessageEntryGroup" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="iLoopModel.Event" Width="1.5" PointX="8.25" PointY="100.25" />
+        <EntityTypeShape EntityType="iLoopModel.EventDetail" Width="1.5" PointX="10.5" PointY="105.375" />
+        <EntityTypeShape EntityType="iLoopModel.EventType" Width="1.5" PointX="18" PointY="80.125" />
+        <AssociationConnector Association="iLoopModel.FK_Event_UserInfo" />
+        <AssociationConnector Association="iLoopModel.FK_EventDetail_Event" />
+        <AssociationConnector Association="iLoopModel.FK_Request_Event" />
+        <EntityTypeShape EntityType="iLoopModel.CompanyProductAndService" Width="1.5" PointX="12.75" PointY="71.875" />
+        <EntityTypeShape EntityType="iLoopModel.CompanyPSCategory" Width="1.5" PointX="10.5" PointY="89.125" />
+        <EntityTypeShape EntityType="iLoopModel.CompanyPSPaymentType" Width="1.5" PointX="15.75" PointY="80.625" />
+        <EntityTypeShape EntityType="iLoopModel.CompanyPSPrerequisite" Width="1.5" PointX="15" PointY="88.375" />
+        <EntityTypeShape EntityType="iLoopModel.CompanyPSPrice" Width="1.5" PointX="18" PointY="73" />
+        <EntityTypeShape EntityType="iLoopModel.CompanyPSRoom" Width="1.5" PointX="16.5" PointY="64.5" />
+        <EntityTypeShape EntityType="iLoopModel.CompanyPSRoomType" Width="1.5" PointX="14.25" PointY="68.875" />
+        <EntityTypeShape EntityType="iLoopModel.CompanyPSSeasonable" Width="1.5" PointX="15" PointY="72.5" />
+        <EntityTypeShape EntityType="iLoopModel.CompanyPSSupplement" Width="1.5" PointX="15" PointY="85.625" />
+        <EntityTypeShape EntityType="iLoopModel.CompanyPSTable" Width="1.5" PointX="10.5" PointY="54.125" />
+        <EntityTypeShape EntityType="iLoopModel.CompanyPSTableConnectable" Width="1.5" PointX="12.75" PointY="54.25" />
+        <EntityTypeShape EntityType="iLoopModel.CompanyService" Width="1.5" PointX="15" PointY="75.75" />
+        <EntityTypeShape EntityType="iLoopModel.CompanyServiceClient" Width="1.5" PointX="20.25" PointY="73" />
+        <EntityTypeShape EntityType="iLoopModel.CompanyServiceEnlistedEquipment" Width="1.5" PointX="17.25" PointY="89.125" />
+        <EntityTypeShape EntityType="iLoopModel.CompanyServiceEnlistedFacility" Width="1.5" PointX="18" PointY="77.125" />
+        <EntityTypeShape EntityType="iLoopModel.CompanyServiceEquipment" Width="1.5" PointX="10.5" PointY="98.125" />
+        <EntityTypeShape EntityType="iLoopModel.CompanyServiceEventType" Width="1.5" PointX="20.25" PointY="77.375" />
+        <EntityTypeShape EntityType="iLoopModel.CompanyServiceFacility" Width="1.5" PointX="10.5" PointY="78.375" />
+        <EntityTypeShape EntityType="iLoopModel.CompanyServiceResponsibleUser" Width="1.5" PointX="22.25" PointY="69.375" />
+        <EntityTypeShape EntityType="iLoopModel.CompanyServiceTimeSchedule" Width="1.5" PointX="17.25" PointY="85.25" />
+        <EntityTypeShape EntityType="iLoopModel.CompanyServiceTimeType" Width="1.5" PointX="12.75" PointY="78.5" />
+        <EntityTypeShape EntityType="iLoopModel.UserEventAvailability" Width="1.5" PointX="16.5" PointY="68.5" />
+        <AssociationConnector Association="iLoopModel.FK_CompanyProductAndService_CompanyPSCategory" />
+        <AssociationConnector Association="iLoopModel.FK_CompanyProductAndService_UserInfoCompany" />
+        <AssociationConnector Association="iLoopModel.FK_CompanyPSPrerequisites_CompanyProductAndService" />
+        <AssociationConnector Association="iLoopModel.FK_CompanyPSPrerequisites_CompanyProductAndService1" />
+        <AssociationConnector Association="iLoopModel.FK_CompanyPSPrice_CompanyProductAndService" />
+        <AssociationConnector Association="iLoopModel.FK_CompanyPSPrice_CompanyProductAndService1" />
+        <AssociationConnector Association="iLoopModel.FK_CompanyPSSeasonable_CompanyProductAndService" />
+        <AssociationConnector Association="iLoopModel.FK_CompanyPSSupplement_CompanyProductAndService" />
+        <AssociationConnector Association="iLoopModel.FK_CompanyPSSupplement_CompanyProductAndService1" />
+        <AssociationConnector Association="iLoopModel.FK_CompanyService_CompanyProductAndService" />
+        <AssociationConnector Association="iLoopModel.FK_CompanyServiceEnlistedFacility_CompanyProductAndService" />
+        <AssociationConnector Association="iLoopModel.FK_CompanyPSCategory_UserInfoCompany" />
+        <AssociationConnector Association="iLoopModel.FK_CompanyPSPrice_CompanyPSPaymentType" />
+        <AssociationConnector Association="iLoopModel.FK_CompanyPSRoom_CompanyPSRoomType" />
+        <AssociationConnector Association="iLoopModel.FK_CompanyPSRoom_UserInfoCompany" />
+        <AssociationConnector Association="iLoopModel.FK_CompanyPSTable_UserInfoCompany" />
+        <AssociationConnector Association="iLoopModel.FK_CompanyPSTableConnectable_CompanyPSTable" />
+        <AssociationConnector Association="iLoopModel.FK_CompanyPSTableConnectable_CompanyPSTable1" />
+        <AssociationConnector Association="iLoopModel.FK_CompanyService_CompanyServiceTimeType" />
+        <AssociationConnector Association="iLoopModel.FK_CompanyServiceClient_CompanyService" />
+        <AssociationConnector Association="iLoopModel.FK_CompanyServiceEnlistedEquipment_CompanyService" />
+        <AssociationConnector Association="iLoopModel.FK_CompanyServiceEventType_CompanyService" />
+        <AssociationConnector Association="iLoopModel.FK_CompanyServiceResponsibleUser_CompanyService" />
+        <AssociationConnector Association="iLoopModel.FK_CompanyServiceTimeSchedule_CompanyService" />
+        <AssociationConnector Association="iLoopModel.FK_CompanyServiceClient_UserInfoPerson" />
+        <AssociationConnector Association="iLoopModel.FK_CompanyServiceEnlistedEquipment_CompanyServiceEquipment" />
+        <AssociationConnector Association="iLoopModel.FK_CompanyServiceEnlistedFacility_CompanyServiceFacility" />
+        <AssociationConnector Association="iLoopModel.FK_CompanyServiceEquipment_UserInfoCompany" />
+        <AssociationConnector Association="iLoopModel.FK_CompanyServiceEventType_EventType" />
+        <AssociationConnector Association="iLoopModel.FK_CompanyServiceFacility_UserInfoCompany" />
+        <AssociationConnector Association="iLoopModel.FK_CompanyServiceResponsibleUser_UserInfoPerson" />
+        <AssociationConnector Association="iLoopModel.FK_UserEventAvailability_EventType" />
+        <AssociationConnector Association="iLoopModel.FK_UserEventAvailability_UserInfoPerson" />
+        <EntityTypeShape EntityType="iLoopModel.UserLocation" Width="1.5" PointX="8.25" PointY="97.5" />
+        <AssociationConnector Association="iLoopModel.FK_UserLocation_UserInfo" />
+        <EntityTypeShape EntityType="iLoopModel.Notification" Width="1.5" PointX="2.75" PointY="6.75" />
+        <EntityTypeShape EntityType="iLoopModel.EventAttendee" Width="1.5" PointX="13.5" PointY="82" />
+        <AssociationConnector Association="iLoopModel.FK_EventAttendees_Event" />
+        <AssociationConnector Association="iLoopModel.FK_EventAttendees_UserInfo" />
+        <EntityTypeShape EntityType="iLoopModel.AcademicInstitute" Width="1.5" PointX="17.25" PointY="92" />
+        <EntityTypeShape EntityType="iLoopModel.Academic" Width="1.5" PointX="19.5" PointY="67.875" />
+        <EntityTypeShape EntityType="iLoopModel.AcademicConcentration" Width="1.5" PointX="17.25" PointY="58.5" />
+        <AssociationConnector Association="iLoopModel.FK_Academic_AcademicConcentration" />
+        <AssociationConnector Association="iLoopModel.FK_Academic_AcademicInstitute" />
+        <AssociationConnector Association="iLoopModel.FK_Academic_City" />
+        <AssociationConnector Association="iLoopModel.FK_Academic_UserInfoPerson" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

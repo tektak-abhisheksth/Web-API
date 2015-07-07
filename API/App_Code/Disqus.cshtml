@@ -1,0 +1,78 @@
+﻿@using System.Web.WebPages.Scope;
+@functions {
+    private const string InitializedExceptionMessage = "The Disqus Helper has not been initialized.";
+    private const string ArgumentNullExceptionMessage = "Argument cannot be null or empty.";
+
+    private static readonly object ApiKey = "iloopwebapi";
+    private static readonly object InitializedKey = new object();
+
+    public static string ForumShortName
+    {
+        get
+        {
+            if (!Initialized)
+            {
+                throw new InvalidOperationException(InitializedExceptionMessage);
+            }
+            return (string)(ScopeStorage.CurrentScope[ApiKey] ?? "");
+        }
+
+        private set
+        {
+            if (value == null)
+            {
+                throw new ArgumentNullException("ApiKey");
+            }
+
+            ScopeStorage.CurrentScope[ApiKey] = value;
+        }
+    }
+
+    private static bool Initialized
+    {
+        get
+        {
+            return (bool)(ScopeStorage.CurrentScope[InitializedKey] ?? false);
+        }
+        set
+        {
+            ScopeStorage.CurrentScope[InitializedKey] = value;
+        }
+    }
+
+    /// <summary>
+    /// Initializes the Disqus helper.
+    /// </summary>
+    /// <param name="forumShortName">The site shortname.</param>
+    public static void Initialize(string forumShortName)
+    {
+        if (string.IsNullOrWhiteSpace(forumShortName))
+        {
+            throw new ArgumentException(ArgumentNullExceptionMessage, "forumShortName");
+        }
+
+        ForumShortName = forumShortName;
+
+        Initialized = true;
+    }
+}
+
+@helper ShowComments(string pageIdentifier)
+{
+    <p>
+        <div id="disqus_thread"></div>
+    </p>
+    <script type='text/javascript'>
+        var disqus_shortname = '@ForumShortName';
+        var disqus_developer = 1;
+        var disqus_identifier = '@pageIdentifier';
+
+        (function () {
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+}

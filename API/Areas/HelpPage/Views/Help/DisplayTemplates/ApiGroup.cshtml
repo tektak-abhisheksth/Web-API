@@ -1,0 +1,77 @@
+@using System.Linq
+@using API.Areas.HelpPage
+@using Humanizer
+@using Model.Attribute
+@using Utility
+@model IGrouping<System.Web.Http.Controllers.HttpControllerDescriptor, System.Web.Http.Description.ApiDescription>
+
+@{
+    var controllerDocumentation = ViewBag.DocumentationProvider != null ?
+        ViewBag.DocumentationProvider.GetDocumentation(Model.Key) :
+        null;
+    var preferences = new List<String> { "Get", "Put", "Post", "Delete" };
+    preferences = Enumerable.Reverse(preferences).ToList();
+    var prefUpper = new List<string>();
+    preferences.ForEach(x => prefUpper.Add(x.ToUpper()));
+    var apis = Model.OrderBy(x =>
+    {
+        var dff = Math.Abs((DateTime.Now - x.ActionDescriptor.GetCustomAttributes<MetaDataAttribute>().First().AddedDate).TotalDays);
+        return dff >= 7 ? int.MaxValue : dff;
+    }).ThenByDescending(x => preferences.IndexOf(x.ActionDescriptor.ActionName)).ThenBy(x => x.ActionDescriptor.ActionName).ThenByDescending(x => prefUpper.IndexOf(x.HttpMethod.Method)).ToList();
+    DateTime? addedDate = null;
+    var all = apis.Where(x => x.ActionDescriptor.ActionBinding.ActionDescriptor.GetCustomAttributes<MetaDataAttribute>().Any()).ToList();
+    if (all.Any())
+    {
+        addedDate = all.Max(x => x.ActionDescriptor.ActionBinding.ActionDescriptor.GetCustomAttributes<MetaDataAttribute>().First().AddedDate);
+    }
+}
+<div class="collapsible" added="@addedDate" style="position: relative" id="controller_@Model.Key.ControllerName" title="@controllerDocumentation">
+    @Model.Key.ControllerName
+    <div style="position: absolute; top: -4px; right: 2px; font-size: smaller">@Model.Count()</div><span></span>
+</div>
+<div class="container" style="display: none">
+    @if (!String.IsNullOrEmpty(controllerDocumentation))
+    {
+        <p style="margin-top: 10px">@controllerDocumentation</p>
+    }
+    <table class="help-page-table" style="width: 98%">
+        <thead>
+            <tr><th>Item</th><th>Link</th><th>Method</th><th>Added</th><th>Description</th></tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < apis.Count(); ++i)
+            {
+                var api = apis[i];
+                addedDate = null;
+                var markType = 3;
+                var attr = api.ActionDescriptor.ActionBinding.ActionDescriptor.GetCustomAttributes<MetaDataAttribute>().FirstOrDefault() ?? Model.Key.GetCustomAttributes<MetaDataAttribute>().FirstOrDefault();
+                var isAnonymous = api.ActionDescriptor.ActionBinding.ActionDescriptor.GetCustomAttributes<System.Web.Http.AllowAnonymousAttribute>().Any() ? 1 : 0;
+                if (attr != null)
+                {
+                    addedDate = attr.AddedDate;
+                    markType = attr.MarkType == 0 ? 3 : attr.MarkType;
+                }
+                var tip = string.Format("Added: {0}<br />API relative path:<br />{1}", addedDate.Value.ToLongDateString(), api.RelativePath);
+                <tr class="notice" marktype="@markType" isanonymous="@isAnonymous" added="@addedDate" data-trigger="hover" data-html="true" data-toggle="popover" data-placement="bottom" data-content="@tip">
+                    <td style="width: 1%">@(i + 1)</td>
+                    <td onclick="document.location.href = '@Url.Action("Api", "Help", new {apiId = api.GetFriendlyId()})';" class="api-name" style="width: 20%; white-space: nowrap;">
+                        <a href="@Url.Action("Api", "Help", new {apiId = api.GetFriendlyId()})">@api.ActionDescriptor.ActionName.AddSpaceBeforeCapitalLetters()</a>
+                    </td>
+                    <td style="width: 10%;white-space:nowrap;">@api.HttpMethod.Method</td>
+                    <td style="width: 10%;white-space:nowrap;">@addedDate.Value.ToLocalTime().Humanize()</td>
+                    <td class="api-documentation">
+                        @if (api.Documentation != null)
+                        {
+                            <p>@api.Documentation</p>
+                        }
+                        else
+                        {
+                            <p>No documentation available.</p>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>

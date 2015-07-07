@@ -1,0 +1,56 @@
+@using System
+@using Utility
+@model System.Collections.Generic.IList<API.Areas.HelpPage.ModelDescriptions.ParameterDescription>
+
+@if (Model.Count > 0)
+{
+    <table class="help-page-table">
+        <thead>
+            <tr><th width="4%">Name</th><th>Type</th><th>Additional information</th></tr>
+        </thead>
+        <tbody>
+            @foreach (var parameter in Model)
+            {
+                var modelDescription = parameter.TypeDescription;
+                var description = string.IsNullOrEmpty(parameter.Description) ? "No description." : parameter.Description;
+                var displayText = Char.IsLower(parameter.Name[0]) ? parameter.Name : parameter.Name.AddSpaceBeforeCapitalLetters();
+                <tr data-trigger="hover" data-toggle="popover" data-placement="top" data-content="@description">
+                    <td width="1%">@displayText</td>
+                    @*<td class="parameter-documentation">
+                            <p>@parameter.Documentation</p>
+                        </td>*@
+                    <td width="1%" nowrap="nowrap">
+                        @Html.DisplayFor(m => modelDescription.ModelType, "ModelDescriptionLink", new { modelDescription })
+                    </td>
+                    <td class="parameter-annotations">
+                        <p>
+                            @if (!string.IsNullOrWhiteSpace(parameter.Documentation))
+                            {
+                                @parameter.Documentation;
+                            }
+                            else if (parameter.Annotations.Count > 0)
+                            {
+                                foreach (var annotation in parameter.Annotations)
+                                {
+                                    @annotation.Documentation<span>.</span>
+                                }
+                            }
+                            else
+                            {
+                                <span>-</span>
+                            }
+                        </p>
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>None.</p>
+}
+<script>
+    $(initializeToolTip());
+</script>

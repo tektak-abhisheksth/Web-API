@@ -1,0 +1,14 @@
+@using System.Web
+@model API.Areas.HelpPage.InvalidSample
+
+@if (HttpContext.Current.IsDebuggingEnabled)
+{
+    <div class="warning-message-container">
+        <p>N/A.</p>
+        @*<p>@Model.ErrorMessage</p>*@
+    </div>
+}
+else
+{
+    <p>Sample not available.</p>
+}

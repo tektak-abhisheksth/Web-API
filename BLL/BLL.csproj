@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A72280A4-7442-4EBB-A810-631855D53E68}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BLL</RootNamespace>
+    <AssemblyName>BLL</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Account\AccountWebService.cs" />
+    <Compile Include="Account\IAccountWebService.cs" />
+    <Compile Include="Category\CategoryWebService.cs" />
+    <Compile Include="Category\CategoryService.cs" />
+    <Compile Include="Category\ICategoryWebService.cs" />
+    <Compile Include="Category\ICategoryService.cs" />
+    <Compile Include="Chat\ChatService.cs" />
+    <Compile Include="Chat\IChatService.cs" />
+    <Compile Include="ClientAPI\SendSMS.cs" />
+    <Compile Include="ClientAPI\SMSAPI.cs" />
+    <Compile Include="Data\DataService.cs" />
+    <Compile Include="Data\IDataService.cs" />
+    <Compile Include="Friend\FriendWebService.cs" />
+    <Compile Include="Friend\FriendService.cs" />
+    <Compile Include="Friend\IFriendWebService.cs" />
+    <Compile Include="Friend\IFriendService.cs" />
+    <Compile Include="Inbox\IInboxService.cs" />
+    <Compile Include="Inbox\InboxService.cs" />
+    <Compile Include="Media\IMediaService.cs" />
+    <Compile Include="Media\MediaService.cs" />
+    <Compile Include="Notification\INotificationService.cs" />
+    <Compile Include="Notification\NotificationService.cs" />
+    <Compile Include="Profile\IProfileBusinessService.cs" />
+    <Compile Include="Profile\IProfilePersonalService.cs" />
+    <Compile Include="Profile\IProfilePersonalWebService.cs" />
+    <Compile Include="Profile\IProfileWebService.cs" />
+    <Compile Include="Profile\ProfileBusinessService.cs" />
+    <Compile Include="Profile\ProfilePersonalService.cs" />
+    <Compile Include="Profile\ProfilePersonalWebService.cs" />
+    <Compile Include="Profile\ProfileWebService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Profile\IProfileService.cs" />
+    <Compile Include="Profile\ProfileService.cs" />
+    <Compile Include="Account\IAccountService.cs" />
+    <Compile Include="Account\AccountService.cs" />
+    <Compile Include="Search\ISearchService.cs" />
+    <Compile Include="Search\SearchService.cs" />
+    <Compile Include="Setting\ISettingService.cs" />
+    <Compile Include="Setting\SettingService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{C6537742-5F4B-4C95-AC5E-715E81F78BE5}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{C2BB44D5-C122-439D-8260-59A84ADF9875}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Service\Service.csproj">
+      <Project>{fd724624-8969-4c47-bc33-f6912efcc85d}</Project>
+      <Name>Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utility\Utility.csproj">
+      <Project>{65EA7D0A-AA6B-44E0-8E65-215B6C1001C4}</Project>
+      <Name>Utility</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

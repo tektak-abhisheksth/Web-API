@@ -1,0 +1,35 @@
+@using API.Areas.HelpPage.ModelDescriptions
+@using Humanizer
+@model EnumTypeModelDescription
+
+<br />
+<p><div style="margin-top: .5em"><strong>@Model.Description</strong></div></p>
+
+<table class="help-page-table" style="width: 98%">
+    <thead>
+        <tr><th>Name</th><th>Value</th><th>Added</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        @foreach (EnumValueDescription value in Model.Values)
+        {
+            var mTp = Model.MarkType == 0 ? 3 : Model.MarkType;
+            if (value.MarkType > 0)
+            { mTp = value.MarkType; }
+            <tr class="notice" marktype="@mTp" added="@value.AddedDate" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="@value.Description">
+                <td class="enum-name">
+                    @value.Name
+                </td>
+                <td class="enum-value">
+                    <p>@value.Value</p>
+                </td>
+                <td>@value.AddedDate.Value.ToLocalTime().Humanize()</td>
+                <td class="enum-description">
+                    <p>@value.Documentation</p>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<script>
+    $(initializeToolTip());
+</script>

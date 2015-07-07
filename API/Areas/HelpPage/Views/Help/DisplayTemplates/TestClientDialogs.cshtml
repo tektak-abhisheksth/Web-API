@@ -1,0 +1,92 @@
+@using System
+@using System.Linq
+@using System.Web
+@using System.Web.Helpers
+@using System.Web.Http.Description
+@model API.Areas.HelpPage.Models.HelpPageApiModel
+
+@{
+    var description = Model.ApiDescription;
+    string applicationPath = Request.ApplicationPath;
+    if (!applicationPath.EndsWith("/"))
+    {
+        applicationPath += "/";
+    }
+}
+
+<button id="testClientButton" style="box-shadow: 0 5px 8px rgba(0,0,0,0.5); left: 1%">Try it!</button>
+<div id="testClientDialog" title="@description.RelativePath">
+    <input class="httpMethod" spellcheck="true" data-bind="value: HttpMethod" />
+    <input class="uriPath" spellcheck="false" data-bind="value: UriPath" />
+    <div data-bind="visible: UriParameters.length > 0">
+        <h5 class="ui-widget-header">URI parameters</h5>
+        <div class="panel">
+            <div data-bind="foreach: UriParameters">
+                <div style="overflow: no-display">
+                    <input readonly="true" spellcheck="false" tabindex="100" class="uriParameterLabel" data-bind="value: '{' + name + '}'" />
+                    <span>= </span>
+                    <input spellcheck="false" autocomplete="on" style="width: 40%" data-bind="value: value, valueUpdate: 'afterkeydown', enable: enabled" />
+                    <input title="Include this parameter in the query string." type="checkbox" data-bind="checked: enabled" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <h5 class="ui-widget-header">
+        Headers | <a style="text-decoration: underline" href="#" data-bind="click: addHeader">Add header</a>
+    </h5>
+    <div class="panel">
+        <div data-bind="foreach: RequestHeaders">
+            <div>
+                <input autocomplete="on" spellcheck="true" data-bind='value: name, uniqueName: true' />
+                <span>: </span>
+                <input spellcheck="false" style="width: 60%" data-bind='value: value, uniqueName: true, valueUpdate: "afterkeydown"' />
+                <a href='#' data-bind='click: $root.removeHeader'>Delete</a>
+            </div>
+        </div>
+    </div>
+    <h5 class="ui-widget-header">
+        <input type='checkbox' data-bind='checked: ShouldShowBody' />Body
+    </h5>
+    <div data-bind="visible: ShouldShowBody">
+        <div data-bind="visible: SampleTypes.length > 0">
+            <span>Format: </span>
+            <select data-bind="options: SampleTypes, value: RequestMediaType"></select><span style="position: absolute; right:2%;"><button onclick="replaceValues()" title="Reassign login defaults."><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAMAAABrrFhUAAABg1BMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8aT76cAAAAgHRSTlMAAAIEBggKDA4QEhQWGBocHiAiJCYoKiwuMDI0Njg6PD5AQkRGSEpMTlBSVFZYWlxeYGJkZmhqbG5wcnR2eHp8foGDhYeJi42PkZOVl5mbnZ+ho6Wnqautr7Gztbe5u72/wcPFx8nLzc/R09XX2dvd3+Hj5efp6+3v8fP19/n7/cXRvhYAAA4wSURBVHhe3Nv/UxJbHMfhN7tAF0jMUIIwbUxM00nvSJNWOiPkl+w2Wo2OMlYimIGJSgkCuvv50+/PzZyzX+Ds7qHnHzj7y/mc156dhesiqemFlfc7X3+c1+rNG12/adZr5z++7rxfWZhORfAX8ydn1/KVFhlqVfJrs0k//jLq8OLnikaWaZXPi8Mq/g7BdK7Qpg60C7l0ED0utnBwQ124OVgYRK/yPdqokgDVjUc+9Bxfau2ShLlcS/nQS/qWqiRYdakPPUKZ2NPIAdrehAL5hZdr5Jjachhyu7/ZJke1N+9DXqldnRyn76Ygp8Q+uWQ/AfnEd3Vyjb4bh1yi2zq5St+OQh6B5Ra5rrUcgBx8MxfkiYsZHyQQ+0ae+RaD19Q3bfJQ+40KTyVPqEP6dfWkdPgln/9yWDqpXuvUoZMkvKOsaGTX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" style="vertical-align: central" width="20" height="20" /></button></span>
+        </div>
+        <pre><textarea id="requestBody" class="sampleArea" spellcheck="false" data-bind="    value: RequestBody, valueUpdate: 'afterkeydown'" rows="9"></textarea></pre>
+    </div>
+</div>
+
+<div id="testClientResponseDialog" style="z-index: 3000;" title="Response for @description.RelativePath" data-bind="with: response">
+    <div class="responseStatusDiv">
+        <h5 class="ui-widget-header">Status</h5>
+        <span data-bind="text: status"></span>
+    </div>
+    <div class="responseHeaderDiv">
+        <h5 class="ui-widget-header">Headers</h5>
+        <textarea spellcheck="false" data-bind="value: headers" class="sampleArea" readonly='readonly' rows="2"></textarea>
+    </div>
+    <div class="responseBodyDiv">
+        <h5 class="ui-widget-header">Body</h5>
+        <textarea id="responseBody" spellcheck="false" data-bind="value: content" class="sampleArea" readonly='readonly' rows="16"></textarea>
+    </div>
+    <div style="float: right"><a style="font-size: small" title="Please submit a mail to Web API team to report and help fix this problem." onclick="generateMail()">Report a bug</a></div>
+</div>
+<script>
+    testClientModel = {
+        HttpMethod: '@Model.ApiDescription.HttpMethod',
+        UriPathTemplate: @Html.Raw(Json.Encode(Model.ApiDescription.RelativePath)),
+        UriParameters: [
+            @foreach (var parameter in Model.ApiDescription.ParameterDescriptions)
+            {
+                if (parameter.Source == ApiParameterSource.FromUri)
+                {
+                    @:{ name: "@parameter.Name", value: "" },
+                }
+            }
+        ],
+        Samples: {
+            @Html.Raw(@String.Join(",", Model.SampleRequests.Select(s => String.Format("\"{0}\": \"{1}\"", s.Key, HttpUtility.UrlEncode(s.Value.ToString().Replace("+", "%2B")))).ToArray()))
+        },
+        BaseAddress: '@applicationPath'
+    };
+</script>

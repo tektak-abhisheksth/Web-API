@@ -1,0 +1,81 @@
+﻿@using System.Linq
+@using Humanizer
+@model IList<Model.WebClient.Trace>
+
+@for (var i = 0; i < Model.Count(); i++)
+{
+    var displayOverride = string.Empty;
+    int status;
+    var filterType = 1;
+    if (string.IsNullOrWhiteSpace(Model[i].Status) || int.TryParse(Model[i].Status, out status) && status >= 500)
+    {
+        Model[i].Status = Model[i].Status ?? "Unknown";
+        filterType = 5;
+        displayOverride = "stl5";
+    }
+    else if (Model[i].Status.StartsWith("3") || Model[i].Status.StartsWith("4"))
+    {
+        displayOverride = "stl3";
+        filterType = 3;
+    }
+    <div class="collapsible imgtag @displayOverride" username="@string.Concat(Model[i].UserName , "")" dvctype="@string.Concat(@Model[i].DeviceTypeId, "")" set="0" filtertype="@filterType" style="text-transform: none" title="@("Status: " + Model[i].Status + Environment.NewLine + Model[i].Title)">
+        @if (Model[i].UserId > 0)
+        {
+            var source = Model[i].DeviceTypeId.Equals("W", StringComparison.OrdinalIgnoreCase) ? "/Images/Web.png" : (Model[i].DeviceTypeId.Equals("A", StringComparison.OrdinalIgnoreCase) ? @"/Images/Android.png" : @"/Images/Apple.png");
+            var sourceTitle = Model[i].DeviceTypeId.Equals("W", StringComparison.OrdinalIgnoreCase) ? "Web" : (Model[i].DeviceTypeId.Equals("A", StringComparison.OrdinalIgnoreCase) ? "Android" : "iOS");
+            <text><img title="@sourceTitle" alt="@sourceTitle" src="@source" width="20" height="20" /> <strong>@Model[i].Action</strong> [<strong>@Model[i].RequestType</strong>]- <img title="User" alt="User" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAKnRFWHRDcmVhdGlvbiBUaW1lAE1pIDUgU2VwIDIwMDcgMTM6MTk6NDggKzAxMDBOwwhvAAAAB3RJTUUH1wkFCxYSGlU/CgAAAAlwSFlzAAALEgAACxIB0t1+/AAAAARnQU1BAACxjwv8YQUAAAKbSURBVHjajZJdSFNhGMf/7znb2ebmPpybzaUWpaSi3mhYotSNQhJCEGRFEdGFVxGR3UQUFEVX4UVEREEmEt0EZeBFCEIIKUElEq50RW5u7uzDne/tnNPZhZVzhP+b5+HleX/v8z7Pn6BIwxeOl2eEzPlABXPVaivbkYhH41/mV2/5mkIPnj+DWlxvKj7IqdzooYPtAwF/JSRJQCLq9RNYRtg1Dw18uF9cT20kg0f6vYW4q7ZmIM0mMD31Dq9fjoNX8qjyeSBK3F2U0J8Oxt9OsIXopb7BVVmLgL8eyZ0+sOsSfoW/QxI4y38BG/JWuNDT2weLuw5sJIQb10dQxijIZNLatgCClIMiZYBsFAwR0dsTNKBuvJ9b+lQKQG0B8BJkLoFsPIT02jLamoOYmJxDW1Pw3rYAkSj7RBZTEPk0RG4doqigoWEPvjL735QCkL/pHWrfUPk1PTw7fLHPaW91RsFxMjp7DiPv68feo5cjaSnXjoXJaMkO6k/LVyir56bcetJe130Ju+sb0dHVDUewC2PTS1j3NFabCZmnm3s7/wXQG4m9ruORkFN9FCEIx1I4d+wUTO4WjM7yuD2VhMvthtlVbXPp/Nnqmtox9udiatMXXAcGRTirrFZ3FRRFhso4QFvscHp8sFrM8DgdMOkawgsfsTLz6oUenjmxaY1CbJmYiQl5kYNOKNCMzXixEoomweqwYmUlC05WoRrD9fu8LbFwkQ9USRgiq6GHlDvAEJpBXuYNG4sgtAmSyWRshAOxlIFoeSRTmeAWI2mRz0/VQHNCV8RR2mHY0VYOPS9Do81Q8woKUNDGyHKiUSzrW4ZYkM6tLWoa9RiaEteySV2T0nZN5BhNYHM6n6J0RSB6dnXeoulnlHTkR+HOb4btGmcKGSUZAAAAAElFTkSuQmCC" width="16" height="16" /><strong>
+                @Model[i].UserName
+            </strong> (@Model[i].UserId), <img title="Time" alt="Time" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAC60lEQVR42qWTe0hTURzHv3fe+UJFTUyagaaCQiY+CnzVrkGISn+kzq1U1LayBxSUSgVlwag0CqHA3FIsSZvOwrCMqOurhPJFC7LU1HChqKRWm7o717lTbFL91YEfl8M553M+53vuofCfjbLtFBcXC8bHx9MpipKRbhSpjaQmSXVbLJZaX1/fejJn+a8AuVzuTz6awMCgKDHDICAwCC6ubpibm8fQ0CDaWlmMDA92kzkStVo9sg6Qn5/vZ7HgrSQjw0ssFq/RY2Oi0dbZBbMFMJN929pa0dRQOy0QCLaXl5ePWgG8tl6vfyORyiIZMQMBQWbcY/Agi0UMAbQTgKyGQbWMhYmHEJPmxtoekUi0gz8OpVAoUv23BDScKiiyLuaL17KsGrTbGPCARQ4oL7sK/dhwmkql0vKA5lz54aSIiEhk3mdQm8muBRMXu/4I2WT8VhqLnu5uNN2veEIAyTxAf0FZssnD3R12/O42BrviosF2rAA43sAMLBCDyelZ3L5S+JUARFReXp6p9KaaVmgScHc/C8FqtAnx0X/c+cPnXTikYXA5hcX1Mwe5yspKIZWTkzN5TnnD29PDxoCU/vMAcnNzUVVVtQZw8gmGkRjMfJuFSnlyqrq62puSSqX9WUcKwsLCI3BMy0At+Z3B1JcBeG4OtuovEf3jZFyZzGLgfS8e3Sl9V1dXF0alpqaWBIRsKzhw9CxcHGnQgpUMeIvl1fC41RvgIT9JCI0VSox90pVqtdpC/j+g+/r6ZlKyT7iFRsUSiD2KHjMo3ctag+QBfP9SEosfhiV87H+FpzVl8+Hh4RvIWs5qm56eHrewuMgm7FPQwZHxcHZyhL29EBef7cb5PS+wsGSCwbiAwd4OvGxUcY4ODkx9fX3nurcgkUh2GgyGFncvH6etMYnw8QuBk6s7jN9nMTH6AbrXLZibnjA6OzsnajSa9n+9Rlqn010zmUxSjuO8zGazHWlmmqanhUJhXWho6Gle23bNL7k2RSBGzG3UAAAAAElFTkSuQmCC" width="12" height="12" /> @Model[i].Time.ToString("h:mm:ss tt"), <img title="Device" alt="Device" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACCUlEQVQ4jY2SS2tTURSFv3Nye28eA82DpkVaiehEsc4MFZw4SB2FlvgDCoriSAdVhHbQIlgfFJ9g8QFOCoLgpAMN9THxFxSHKRK10bY+QkOsvck920HaizZt6obDhr32XmetfY7KZDI7gZ/8R+TzebWxZnmeR2dHJ5MP7jP/uYRS//aICN27uxi+NLIpqQVgicW3pe/MzMxg220+mErtIZFIsPLrNwPZAYAbwIUmAkFQSuE4Do7j+GA0GuXh5BRzs4W1ysQQMLSO64j9xtrO99xsgWL1A+2JOCKNi9x6jeUfy3SROmYBKBQiwurqKsZ4/nCt5gJwNH2YwcFBn0BEGB4dg+qaBU95xOMx0uk0WmufIJlMAuC6rj8MYIzBGNPYQSAQWFpYWiCXO9EkP5fLbecQKxwKceX6VVaCQfTiIvyloD2Z5PmTF9i27UsH0Fr7Si1lt9FdcwmdPkP57WtUuewTBIMhAD6V5k2xVKRuPBSKarVKpVIhqCPawjO48Tju5TG8chnqdZ/A8xo+C+8/6otnR9BaIyIY8YjGkxADjQg6HMYc6kEb48vTWmM7jU81fm2cA/t6mLhzk/17D3Lr3l12xToBUJlMpsbaa2yMbDbL9NQrAE6dO8mj24+bMiLS6pzv6+2XZ0+nZbPc19svan2zW0TH8SMDX1o16FYg8LVtR+jdlsMR++UflwPhrj7QyRAAAAAASUVORK5CYII=" width="12" height="12" /> @Model[i].DeviceId.Truncate(36), <img title="Token" alt="Token" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAC8UlEQVQ4y12TPWhkVQCFv/v+Mu/Nf5KXmcyamIzsujpCXCy2EUEMEre0ERGxiYU/TUobRRvBYq20cS1ERGwEC2GLDbKCLEY0roqI6GTNJGY2k/l7OzPv5b1377XQDbue6nA4nOLAJ/ifrn9SfRBYB54Clv+Lm8Bl4NLKc+1f7+yL22b746oDXARe8muRkS0mOJkUhCaNBaOhw2Erq4APgI1zz7fDk4HvP6o6wJfl2WTVr8VEowzHYYY0sQGw7Bi3MMEt3uJw16PbdjeBC4+80I4tAKl4tzwjV6d9Rb9dZsqNKcwG2E4MQpMkFmHg0t2tMFvroBRPHLXdi8Cr4tqH1QZw/YFGYg57WdxsTL48AaFAaIRQIBTjfoloVELrmNKpNj9vFSWwYkmp1+fntTkZOzhOSq6QoJWJEAIMhUYw6haR5gqllQtM2t8RHG5SWxyZrR1v3ZKKNc8ThBOTjAuHf2fxsgm50jFCCYa9DKnZoFx/EiEMZBIRhSalqkT+yZolJXXbMhgmMJW/n5lTDXr7PxDdbGIYCmmewa+vgoZg7xppcJU4dnAchZTUrVRqtDZIUgXCxrY8KkuPMewvMBkeUKk/jlCa3v63pIOvKM7EBAMbKU1SqWNLSppRKM7almLc/4lwEjC/dJ5ieYnC9H2gFUe7W8TDb5idkyhpYNsp0dhESv6ypOTyYKjO5vMCgSBJbvDb9j6Lpx8lX1rgZmub42CLOR9sU3DUM3A9Sa9rISVXxBfvzD0E/Hj+nGt2BxGFrI0wNM29kEwmR8ELqfgWjqvp9xTBLc38PSlfX7Ul8LAA+Pxt/71axX753gWLo0FELmOTz5kgNM6UIIlTgpFkHEqqVdjZgdaeeP/p1zqvWABKsbF3kJzRmtXlRY9xFHPQCf89FrBtQS5rUK2YNJuK3RabwMZdMH32ln8C0+llx5guG7iuQGtNFCv6A8nvf8gTmJ55vRPeNXBbn77pN4AXgTWgDsTADeAKcOnZNzq/3Nn/B+0LUb6QYI8gAAAAAElFTkSuQmCC" width="12" height="12" /> @Model[i].Token</text><span></span>
+        }
+        else
+        {
+            <text><strong>@Model[i].Action</strong> [<strong>@Model[i].RequestType</strong>]- <img title="User" alt="User" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAKnRFWHRDcmVhdGlvbiBUaW1lAE1pIDUgU2VwIDIwMDcgMTM6MTk6NDggKzAxMDBOwwhvAAAAB3RJTUUH1wkFCxYSGlU/CgAAAAlwSFlzAAALEgAACxIB0t1+/AAAAARnQU1BAACxjwv8YQUAAAKbSURBVHjajZJdSFNhGMf/7znb2ebmPpybzaUWpaSi3mhYotSNQhJCEGRFEdGFVxGR3UQUFEVX4UVEREEmEt0EZeBFCEIIKUElEq50RW5u7uzDne/tnNPZhZVzhP+b5+HleX/v8z7Pn6BIwxeOl2eEzPlABXPVaivbkYhH41/mV2/5mkIPnj+DWlxvKj7IqdzooYPtAwF/JSRJQCLq9RNYRtg1Dw18uF9cT20kg0f6vYW4q7ZmIM0mMD31Dq9fjoNX8qjyeSBK3F2U0J8Oxt9OsIXopb7BVVmLgL8eyZ0+sOsSfoW/QxI4y38BG/JWuNDT2weLuw5sJIQb10dQxijIZNLatgCClIMiZYBsFAwR0dsTNKBuvJ9b+lQKQG0B8BJkLoFsPIT02jLamoOYmJxDW1Pw3rYAkSj7RBZTEPk0RG4doqigoWEPvjL735QCkL/pHWrfUPk1PTw7fLHPaW91RsFxMjp7DiPv68feo5cjaSnXjoXJaMkO6k/LVyir56bcetJe130Ju+sb0dHVDUewC2PTS1j3NFabCZmnm3s7/wXQG4m9ruORkFN9FCEIx1I4d+wUTO4WjM7yuD2VhMvthtlVbXPp/Nnqmtox9udiatMXXAcGRTirrFZ3FRRFhso4QFvscHp8sFrM8DgdMOkawgsfsTLz6oUenjmxaY1CbJmYiQl5kYNOKNCMzXixEoomweqwYmUlC05WoRrD9fu8LbFwkQ9USRgiq6GHlDvAEJpBXuYNG4sgtAmSyWRshAOxlIFoeSRTmeAWI2mRz0/VQHNCV8RR2mHY0VYOPS9Do81Q8woKUNDGyHKiUSzrW4ZYkM6tLWoa9RiaEteySV2T0nZN5BhNYHM6n6J0RSB6dnXeoulnlHTkR+HOb4btGmcKGSUZAAAAAElFTkSuQmCC" width="12" height="12" /> <strong>anonymous user</strong>, <img title="Time" alt="Time" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAC60lEQVR42qWTe0hTURzHv3fe+UJFTUyagaaCQiY+CnzVrkGISn+kzq1U1LayBxSUSgVlwag0CqHA3FIsSZvOwrCMqOurhPJFC7LU1HChqKRWm7o717lTbFL91YEfl8M553M+53vuofCfjbLtFBcXC8bHx9MpipKRbhSpjaQmSXVbLJZaX1/fejJn+a8AuVzuTz6awMCgKDHDICAwCC6ubpibm8fQ0CDaWlmMDA92kzkStVo9sg6Qn5/vZ7HgrSQjw0ssFq/RY2Oi0dbZBbMFMJN929pa0dRQOy0QCLaXl5ePWgG8tl6vfyORyiIZMQMBQWbcY/Agi0UMAbQTgKyGQbWMhYmHEJPmxtoekUi0gz8OpVAoUv23BDScKiiyLuaL17KsGrTbGPCARQ4oL7sK/dhwmkql0vKA5lz54aSIiEhk3mdQm8muBRMXu/4I2WT8VhqLnu5uNN2veEIAyTxAf0FZssnD3R12/O42BrviosF2rAA43sAMLBCDyelZ3L5S+JUARFReXp6p9KaaVmgScHc/C8FqtAnx0X/c+cPnXTikYXA5hcX1Mwe5yspKIZWTkzN5TnnD29PDxoCU/vMAcnNzUVVVtQZw8gmGkRjMfJuFSnlyqrq62puSSqX9WUcKwsLCI3BMy0At+Z3B1JcBeG4OtuovEf3jZFyZzGLgfS8e3Sl9V1dXF0alpqaWBIRsKzhw9CxcHGnQgpUMeIvl1fC41RvgIT9JCI0VSox90pVqtdpC/j+g+/r6ZlKyT7iFRsUSiD2KHjMo3ctag+QBfP9SEosfhiV87H+FpzVl8+Hh4RvIWs5qm56eHrewuMgm7FPQwZHxcHZyhL29EBef7cb5PS+wsGSCwbiAwd4OvGxUcY4ODkx9fX3nurcgkUh2GgyGFncvH6etMYnw8QuBk6s7jN9nMTH6AbrXLZibnjA6OzsnajSa9n+9Rlqn010zmUxSjuO8zGazHWlmmqanhUJhXWho6Gle23bNL7k2RSBGzG3UAAAAAElFTkSuQmCC" width="12" height="12" /> @Model[i].Time.ToString("h:mm:ss tt")</text><span></span>
+        }
+        <input type="hidden" name="time" value="@Model[i].Time.Ticks" title="@Model[i].RandomNumber" />
+    </div>
+    <div class="container" set="0" style="display: none">
+        <div>
+            @if (Model[i].UserId > 0)
+            {
+                <br />
+                <span>
+                    Auth. key: <input type="text" readonly="readonly" name="token" style="text-align: center;" size="140" value="@Model[i].GetAuthorizationToken()" />
+                    @{if (filterType == 1 && !Model[i].DeviceTypeId.Equals("W", StringComparison.OrdinalIgnoreCase))
+                    {
+                        <img onclick="setDefaults('@Model[i].GetAuthorizationToken()', '@Model[i].UserId', '@Model[i].DeviceTypeId', '@Model[i].DeviceId', '@Model[i].UserName', '@Model[i].UserTypeId', '@Model[i].Token')" title="Set as sample defaults." src="data:image/png;base64,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" style="float: right" width="16" height="16" alt="Default" />
+                    }
+                    }
+                </span>
+                <br />
+            }
+            <br />
+            <span name="displayArrow"><img title="Collapse." src="~/Images/ArrowDown.png" /></span> Request:
+            @{ if (string.IsNullOrWhiteSpace(Model[i].FriendlyURI))
+             {<mark>@Model[i].Uri</mark>}
+             else
+             {
+                <mark><a title="Visit page." href="@string.Format("{0}/{1}","/Help/Api" , @Model[i].FriendlyURI)" target="_blank">@Model[i].Uri</a></mark>
+             }
+            }
+            @if (@Model[i].Request.Length > 0)
+            {
+                <span class="btn btn-clipboard" style="float: right;" name="copy-button" title="Copy to clipboard.">Copy</span>
+                <p>
+                    <pre name="copyTarget">
+@Model[i].Request
+                    </pre>
+                </p>
+            }
+        </div>
+        <div>
+            <span name="displayArrow"><img title="Collapse." src="~/Images/ArrowDown.png" /></span> Response:
+            <span class="btn btn-clipboard" style="float: right;" name="copy-button" title="Copy to clipboard.">Copy</span>
+            <p>
+                <pre name="copyTarget">
+@Model[i].Response
+                     </pre>
+            </p>
+        </div>
+        <span>Actual request body length: @Math.Round(Model[i].RequestBodyLength.GetValueOrDefault(0) / 1024.0, 3) KBs. Actual response body length: @Math.Round(Model[i].ResponseBodyLength.GetValueOrDefault(0) / 1024.0, 3) KBs.</span> <p>&nbsp;</p>
+    </div>
+}

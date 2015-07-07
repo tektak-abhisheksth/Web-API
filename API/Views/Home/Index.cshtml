@@ -1,0 +1,11 @@
+﻿<div class="jumbotron" style="box-shadow:0 5px 8px rgba(0,0,0,0.5);">
+    <h1 class="engraved" style="color: #B2B2B2">Change Log</h1>
+</div>
+<p>This section provides a log point for all changes made in the system.</p>
+<div class="row">
+    @Html.Partial("_ChangeLog")
+    <p>&nbsp;</p>
+</div>
+<p>&nbsp;</p>
+@{ Disqus.Initialize("iloopwebapi"); }
+@Disqus.ShowComments("changelog")

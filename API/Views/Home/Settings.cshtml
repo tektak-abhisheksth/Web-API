@@ -1,0 +1,54 @@
+﻿@using System.Collections.Generic
+@using System.Linq
+@using Microsoft.Ajax.Utilities
+@model Model.WebClient.GlobalSettings
+
+<div class="jumbotron" style="box-shadow: 0 5px 8px rgba(0,0,0,0.5);"><h1 class="engraved" style="color: #B2B2B2">API Settings / Admin Panel</h1></div>
+This section provides options to control overall behaviors of the system. Please note that any changes made here will modify the system, thus affecting all users.<br /><br />
+
+@using (Html.BeginForm("Settings", "Home", FormMethod.Post, new { name = "settingsForm", id = "settingsForm" }))
+{
+    <div style="margin-bottom: 10px;">
+        @Html.CheckBoxFor(x => x.Indent, new { onchange = "SaveSettings()" })
+        <label for="@Model.Indent" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="@ModelMetadata.FromLambdaExpression(model => model.Indent, ViewData).Description">@ModelMetadata.FromLambdaExpression(model => model.Indent, ViewData).DisplayName</label>
+    </div>
+    <div style="margin-bottom: 10px;">
+        @Html.CheckBoxFor(x => x.RemoveDefaults, new { onchange = "SaveSettings()" })
+        <label for="@Model.RemoveDefaults" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="@ModelMetadata.FromLambdaExpression(model => model.RemoveDefaults, ViewData).Description">@ModelMetadata.FromLambdaExpression(model => model.RemoveDefaults, ViewData).DisplayName</label>
+    </div>
+    <div style="margin-bottom: 10px;">
+        @Html.CheckBoxFor(x => x.RemoveNulls, new { onchange = "SaveSettings()" })
+        <label for="@Model.RemoveNulls" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="@ModelMetadata.FromLambdaExpression(model => model.RemoveNulls, ViewData).Description">@ModelMetadata.FromLambdaExpression(model => model.RemoveNulls, ViewData).DisplayName</label>
+    </div>
+    <div style="margin-bottom: 10px;">
+        @Html.CheckBoxFor(x => x.UseIsoFormat, new { onchange = "SaveSettings()" })
+        <label for="@Model.UseIsoFormat" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="@ModelMetadata.FromLambdaExpression(model => model.UseIsoFormat, ViewData).Description">@ModelMetadata.FromLambdaExpression(model => model.UseIsoFormat, ViewData).DisplayName</label>
+    </div>
+    <div style="margin-bottom: 10px;">
+        @Html.CheckBoxFor(x => x.UseCamelCase, new { onchange = "SaveSettings()" })
+        <label for="@Model.UseCamelCase" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="@ModelMetadata.FromLambdaExpression(model => model.UseCamelCase, ViewData).Description">@ModelMetadata.FromLambdaExpression(model => model.UseCamelCase, ViewData).DisplayName</label>
+    </div>
+    <div style="margin-bottom: 10px;">
+        @{
+    var selectListTt = new List<SelectListItem>();
+    Enumerable.Range(1, 120).ForEach(x => selectListTt.Add(new SelectListItem { Value = x.ToString(), Text = x.ToString(), Selected = x == Model.TemporaryTokenExpiryTimeInMinutes }));
+        }
+        @Html.DropDownList("TemporaryTokenExpiryTimeInMinutes", selectListTt, new { onchange = "SaveSettings()" })
+        <label for="@Model.TemporaryTokenExpiryTimeInMinutes" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="@ModelMetadata.FromLambdaExpression(model => model.TemporaryTokenExpiryTimeInMinutes, ViewData).Description">@ModelMetadata.FromLambdaExpression(model => model.TemporaryTokenExpiryTimeInMinutes, ViewData).DisplayName</label>
+    </div>
+}
+
+<p>&nbsp;</p>
+@{ Disqus.Initialize("iloopwebapi"); }
+@Disqus.ShowComments("settings")
+<script type="text/javascript">
+    function SaveSettings() {
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("Settings")',
+            data: $('#settingsForm').serialize()
+        });
+    }
+
+    $("[data-toggle='popover']").popover();
+</script>

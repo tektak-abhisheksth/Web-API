@@ -1,0 +1,101 @@
+@using System
+@using System.Linq
+@model System.Collections.Generic.List<System.Web.Http.Description.ApiDescription>
+@{
+    ViewBag.Title = "iLoop APIs";
+
+    var apiGroups = Model.OrderBy(x => x.ActionDescriptor.ControllerDescriptor.ControllerName).ToLookup(api => api.ActionDescriptor.ControllerDescriptor);
+}
+<style type="text/css">
+    div {
+        text-align: justify;
+    }
+
+    .collapse-open span {
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACuElEQVQ4y6WTTWgUdxyGn5ndZJbNJrtrNgqxMYlmRRRE1KgQqNoWBa0iKQVrRAQPIp486NWDiAcPXjwoYsBipW0Ev+iniuIH1oifUZI0JsZs1iSb3dmPzGxmdmb+/566KoKXvKff6YGX3/MqUkpmEpUZ5rOArvsuqzoe7G3c8qh/dvuw27gj6SotZ3sjS0+2//b3PwD4ATp/vkpLfDm1NaFA/7+9K2pCasf8prnfvuop1mVkfaUbjqnNMZtYuIbvN+1Z1Hn8yI+nLpb0zRu4rQJcuLsVT0hftsDpeHz5PV/N6n1n/qxtePxaCYwVw2rbIptlzQqzqnQME7b9sLPKNhL7yxW2t10JprK+844M7+pLaly7Y9LTm2GioNAwWxCtUolFKqiv1aBkMq+xGXMquaIM0I26tkh17fbJnMKLAcFkxmZo3EURJgINY9rDNASGKdE0Hy1fQD5vFsuAaGTOHsPSGJmAdykH3bBJvUuSSiSoVGAgozGRE1gObFwb4PwvNzCmfbfLgJwV+jqTg2QKXMcilbVwilkmMypG8h4htUQoUsXihREuXxf8de5wurV19U/lL+gFv78kwLTAAQIVCrF5cSZH+hlPmGT1u/S8iGFZOUovz6FFV+0+dmD+gzJAkfKZPsW6vOlhUY2UacLRMFp1K5UVCqoqcVyboCcYGnz9MJ3o+r0lfuK9SHaJi6NpwWjaI2+4pEt1TDsCxxVYtoNt26jSZuxlF5vWLz0uP/DfD5DKBa9VBwq7MxltJWoBS07jeQ5SWEjhITyb4uB15vDwycFDnX98ovKYHhyJBuT+JU36E0cvYqaG8Yw3eFODWGO3yHYfdoPGr5e+/Oqbdn9FoPghwP//8XQo2t0a975bUGd23OwWa0YTzzVZfJv3OelE01xfX0P9kqvDHB33vP6P9qLMdM7/ASS+UYl+RcDmAAAAAElFTkSuQmCC') /*/images/pinned.png*/ no-repeat scroll center center rgba(0, 0, 0, 0);
+    }
+
+    .collapse-close span {
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAsVBMVEX///8AEbgAJocADpQAH20AEbgAJocNOp8OLcYhWMQqZNsAEbgAJodbW1ttd9Ztg7pbW1uXl5dHR0cADYYAHGJFUstFYadOb7lPZtVQXM5Qaq1ZeL1ab9hdhdRjbdNjerVkjuVnjNdrftxrhsRtleZ3mNt8fHwADpAADpkAHmkAIHAKLXwLI5oLMIQMJaQNOp8OLcYZRZkbSaMhTqshWMQjU7YqZNtEUctEYKd8oOmXl5eQggy8AAAAFXRSTlMAPDxdXWtra2tra4+Pj7Cwv7/Lzc2AvIDVAAAAaUlEQVQY02NgAAImNnZOLg5WRgYYEBMTl1WQEBWFC7Bo6RqZ6mkwMyAASIABGeibmBngFeABCXAj+PzyyqqWSnJ8cAELKWlFFRlJc7iAiKa2obGOujCyKWpCDKgAQ8BKgKAAL5qAIIwBACteCetXXBg3AAAAAElFTkSuQmCC') /*/Images/unpinned.png*/ no-repeat scroll center center rgba(0, 0, 0, 0);
+    }
+</style>
+@section Scripts {
+    <link type="text/css" href="~/Areas/HelpPage/HelpPage.css" rel="stylesheet" />
+}
+<header>
+    <div class="content-wrapper">
+        <div class="jumbotron" style="box-shadow: 0 5px 8px rgba(0,0,0,0.5);">
+            <h1 class="engraved" style="color: #B2B2B2">APIs</h1>
+        </div>
+    </div>
+</header>
+<div id="body" class="help-page">
+    <section class="featured">
+        <div class="content-wrapper">
+            <p>
+                The list shows <strong id="totalApis">@Model.Count</strong> of <strong>@Model.Count</strong><span style="font-weight: bold" id="newCount"></span> iLoop Web APIs currently deployed under <span id="totalGroups"></span> distinct groups, as of
+                <span style="font-weight: bold" id="maxDate">@DateTime.UtcNow.ToLongDateString()</span>.
+            </p>
+        </div>
+    </section>
+    @*<div style="text-align: right"> <a href="#" id="openAll" title="Expand all.">Expand All</a> | <a href="#" id="closeAll" title="Collapse all.">Collapse All</a></div>*@
+    <section class="content-wrapper main-content clear-fix">
+        @foreach (var group in apiGroups)
+        {
+            @Html.DisplayFor(m => group, "ApiGroup")
+            <br />
+        }
+    </section>
+</div>
+<p>&nbsp;</p>
+<div>
+    Please report any bugs and/or changes to <a title="If your browser is setup for email, clicking here will let you send us an email." href="mailto:indira.sapkota@tektak.com?subject= About Web API&amp;cc=Abhisheksth@tektak.com">Web API team</a>.
+</div>
+<p>&nbsp;</p>
+@{ Disqus.Initialize("iloopwebapi"); }
+@Disqus.ShowComments("APIs")
+<script>
+    var units = [];
+    $(function () {
+        $('.collapsible[added]').each(function (i, d) {
+            units.push($(d));
+        });
+        $("#totalGroups").html(units.length);
+    });
+
+    function processNew() {
+        var dates = [];
+        var counter = 0;
+        $('.collapsible[added]').each(function (i, d) {
+            dates.push(new Date($(d).attr('added')));
+        });
+        $('#maxDate').text($.datepicker.formatDate('DD, d MM, yy', new Date(Math.max.apply(null, dates))));
+
+        $('.collapsible[added]').each(function (i, d) {
+            var dtCurrent = new Date('@DateTime.Now.ToString("yyyy MM dd")');
+            var dtRecord = new Date($(d).attr('added'));
+            if (6 >= parseInt((dtCurrent.getTime() - dtRecord.getTime()) / (24 * 3600 * 1000)))
+                $(d).addClass('imgtag');
+        });
+
+        $('tr[added]').each(function (i, d) {
+            var dtCurrent = new Date('@DateTime.Now.ToString("yyyy MM dd")');
+            var dtRecord = new Date($(d).attr('added'));
+            if (6 >= parseInt((dtCurrent.getTime() - dtRecord.getTime()) / (24 * 3600 * 1000))) {
+                $(d).css("font-weight", "Bold");
+                ++counter;
+            }
+        });
+        if (counter > 0) $('#newCount').text(" (with " + counter + " new APIs)");
+
+        var total = $("tr[marktype=3]").length;
+        if ($.cookie('display.web') === 'true')
+            total += $("tr[marktype=1]").length;
+        if ($.cookie('display.mobile') === 'true')
+            total += $("tr[marktype=2]").length;
+        $("#totalApis").html(total);
+    }
+
+    //$(processNew());
+    $("[data-toggle='popover']").popover();
+</script>

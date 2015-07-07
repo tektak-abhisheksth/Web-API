@@ -1,0 +1,17 @@
+﻿@model System.DateTime
+<hr style="border-width: 1px 0;" />
+<div class="calendar-avt" title="@Model.ToLongDateString()">
+    <div class="calendar-avt-innrBlk">
+        <div class="calHeader">
+            <h5> @Model.ToString("MMM")</h5>
+        </div>
+        <div class="calBody">
+            <h4>@Model.ToString("dd")</h4>
+            @*<span style="font-size: 8px; position: absolute; right: 1px; bottom: -1px;">@Model.ToString("yy")</span>*@
+        </div>
+        <span style="font-size: 1px; position: absolute;float: right"></span>
+        <div class="clr"></div>
+    </div>
+    <div class="calendar-avt-innrBlk-shade"></div>
+    <div class="calendar-avt-innrBlk-shade"></div>
+</div>

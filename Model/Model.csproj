@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C2BB44D5-C122-439D-8260-59A84ADF9875}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Model</RootNamespace>
+    <AssemblyName>Model</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Account\AccountWebRequest.cs" />
+    <Compile Include="Category\CategoryWebRequest.cs" />
+    <Compile Include="Category\CategoryWebResponse.cs" />
+    <Compile Include="Common\UserDeviceInfoInternal.cs" />
+    <Compile Include="Common\Information.cs" />
+    <Compile Include="Common\User.cs" />
+    <Compile Include="Friend\FriendWebResponse.cs" />
+    <Compile Include="Mail\MailInternal.cs" />
+    <Compile Include="Profile\Business\BusinessProfileRequest.cs" />
+    <Compile Include="Profile\Business\BusinessProfileResponse.cs" />
+    <Compile Include="Profile\ContactRequest.cs" />
+    <Compile Include="Profile\ContactResponse.cs" />
+    <Compile Include="Profile\Personal\PersonalProfileRequest.cs" />
+    <Compile Include="Profile\Personal\PersonalProfileWebResponse.cs" />
+    <Compile Include="Profile\Personal\PersonalProfileWebRequest.cs" />
+    <Compile Include="Profile\ProfileResponse.cs" />
+    <Compile Include="Profile\ProfileRequest.cs" />
+    <Compile Include="Profile\ViewResponse.cs" />
+    <Compile Include="Search\DataRequest.cs" />
+    <Compile Include="Attribute\MetaDataAttribute.cs" />
+    <Compile Include="Category\CategoryRequest.cs" />
+    <Compile Include="Category\CategoryResponse.cs" />
+    <Compile Include="Chat\ChatRequest.cs" />
+    <Compile Include="Chat\ChatResponse.cs" />
+    <Compile Include="Common\Name.cs" />
+    <Compile Include="Common\DateAndTime.cs" />
+    <Compile Include="Common\Paginated.cs" />
+    <Compile Include="Common\GeneralKvPair.cs" />
+    <Compile Include="Common\StatusData.cs" />
+    <Compile Include="Common\UserLocation.cs" />
+    <Compile Include="Company\ProductAndService\ProductAndServiceResponse.cs" />
+    <Compile Include="CountryInfo\UserCity.cs" />
+    <Compile Include="CountryInfo\UserCountry.cs" />
+    <Compile Include="Friend\FriendRequest.cs" />
+    <Compile Include="Friend\FriendResponse.cs" />
+    <Compile Include="Base\UserInformationBaseResponse.cs" />
+    <Compile Include="Inbox\InboxRequest.cs" />
+    <Compile Include="Inbox\InboxResponse.cs" />
+    <Compile Include="Media\ImageRequest.cs" />
+    <Compile Include="Media\ImageResponse.cs" />
+    <Compile Include="Notification\NotificationRequest.cs" />
+    <Compile Include="Notification\NotificationResponse.cs" />
+    <Compile Include="Profile\Personal\PersonalProfileResponse.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Base\RequestBase.cs" />
+    <Compile Include="Base\Response.cs" />
+    <Compile Include="Account\AccountRequest.cs" />
+    <Compile Include="Account\AccountResponse.cs" />
+    <Compile Include="Search\BasicSearchResponse.cs" />
+    <Compile Include="Setting\SettingRequest.cs" />
+    <Compile Include="Setting\SettingResponse.cs" />
+    <Compile Include="Types\ServiceExceptions.cs" />
+    <Compile Include="Types\SystemResponseMessage.cs" />
+    <Compile Include="Types\SystemSession.cs" />
+    <Compile Include="Types\SystemTypes.cs" />
+    <Compile Include="Company\UserDepartment\UserDepartmentResponse.cs" />
+    <Compile Include="Company\EmployeeDepartment\EmployeeDepartmentResponse.cs" />
+    <Compile Include="Types\SystemTypesExtensions.cs" />
+    <Compile Include="Attribute\Validation.cs" />
+    <Compile Include="WebClient\WebClientModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,282 @@
+﻿@model System.Collections.Generic.IList<Model.WebClient.Trace>
+
+<style>
+    .imgtag {
+        background-image: url(../Images/ok.png);
+        background-size: 18px;
+        background-repeat: no-repeat;
+        background-position: 3px 8px;
+        padding-left: 25px;
+    }
+
+        .imgtag.stl5 {
+            background-image: url(../Images/error.png);
+        }
+
+        .imgtag.stl3 {
+            background-image: url(../Images/exclamation.png);
+        }
+</style>
+
+<div class="jumbotron" style="box-shadow: 0 5px 8px rgba(0,0,0,0.5);"><h1 class="engraved" style="color: #B2B2B2">API Trace</h1></div>
+    This section provides a peek into the latest requests made and responses sent to and from server respectively by all clients.<br /><br />
+
+<div class="SystemlistStyle2">
+    <div style="text-align: right">
+        <table style="float: right; width: 30%;table-layout: fixed; text-align: center">
+            <tr>
+                <td><img width="18" height="18" id="aImage" src="~/Images/Android.png" title="Toggle android entries display." onclick=" filterTypes('A', true, 1) " /></td>
+                <td><img width="18" height="18" id="iImage" src="~/Images/Apple.png" title="Toggle iOS entries display." onclick=" filterTypes('I', true, 1) " /></td>
+                <td><img width="18" height="18" id="wImage" src="~/Images/Web.png" title="Toggle web entries display." onclick=" filterTypes('W', true, 1) " /></td>
+                <td style="width: 1%; color: #b2b2b2">|</td>
+                <td><img width="16" height="16" id="okImage" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAADYklEQVR42u2US0gUcRzHv/+Z3XHXXYukF2q6JkShHbKUXlJB9ITIPMT2OBblWoc69LgUdCkpQqXdIKJCmk2wQ6fq0CVLgx7QAyor3XLdVixN25nZ3Zmd6Te7Ylq+IOvUH2YOw/w/n9/r/2f4y4v9F/w7wUWnld5bsC9y8+8IvHYRiYQbFqsb+6Ubkyu4YBdnTJvpPrStCscuHQcsgp8kOyZH4E2vgp6oq/dcxe3eO2gKPkD46ReoiiaiUtr5ZwJvuhuGIZ7dexqf9RDEdw2w8TZwHNDxKIy4rL4fLvA58qDrAfpjI6V4Z0y4z7EOUenuuQM1CCU+4/q7G7BxaWCMgZEgmBJcYUM2uKFqonvZGvib7wGC4CLJx1HgeYjJAc/WA0jPcqC+1T8I56wcup53I9IlB6hE+WwQHtfEw5sWozBXQXdPKY40XAbS0vJJEvgFno94tK2qvBLz5yzAqVdnYKeyJOEWgr8geFhuh0eam2qyz1lBkTea8NzpH9AfZ8iwZ+FbXxFONookEYZLaq19G0vWTylfugHVr2uh0ieOasJ4ht4P/eht6wU88mBlGLwOY+2CLFSUSIjEGGSdIaabuwRokVJU37ppSnJJ0oE6ob2saJlrz+rtOP26BjEYSBCc4xikLjlZGlg4CigS+CnwObOh6cFdK50omSugLw5EExwk3WyWAKYswflbjSptfFuQXVDk3XoCR1uPQzF4xA3ODB/ylyjCz8IE56lvkWF9G+iB0wXVaHeXObDQlYZ+yiSqc5QNYFDzBGUR/A+bcG33KXg/XURI+YqoYYVG8LisoaMlRCS2k+Dir/MwZIpMid5eviIDhXm2ZC+ilIWs6UjwArblVKIhKOKT3EOl4RGj6CMEDz5KwoddDyMLhkg2L8/AvOx0fNeQ7IeSYPiu6xQ1n3roV1PQer8TuqbXEfzgaMfl95M8IFm3dCpcOXbIKoNCEtlIlUw2WFL4piUMTdH8NOs7xjqPI18VA5JVpabEgT7VSDbeFMQsPF40h6H0q3cJvgHjrNHvIp+zmKbr6fIlmZiVZYNEmcQ4Hi+ff0VPiE6pR8ofDz62ICVxk0QsLs7E7FwHHj/pQXen3IYqqWAi8PEFQyTZrgx0fowAPCugcWybPEFKUkHXciONYw7BOycKN9cPwvWE5WCCUpsAAAAASUVORK5CYII=" title="Toggle correct entries display." onclick=" filterTypes(1, true, 1) " /></td>
+                <td><img width="16" height="16" id="warningImage" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAiBJREFUeNpi/P//PwMlgCXQjZnh5n1GhtsPGNHleIC4DspuAuIvyJKqCv8Z1BX/MzCysLDgMjywpiYxhwHowJbW+VOA/PXYnQA0AAsWl5UVn/j53brvn9+t+S4rIzYRJIZNLTMTExM2cyN7uzODjTV/ybIwvGcRFFNg3bL11Ceg+Dl0hdh0q+vpKtpEBavrV3e+YqjufM0QGaSur6sjZwOSwzAAFAtIGMQPamkIs/nz7Rbzt2/fGED47497zM21vjYgOagauB50F1i6OuuY25nzKP/9/Ynhy5cvYPz39xcGOwteZRcHVXOQGlxe4GBiYgxsqfOy+v3tEcPPPz8Yzp8/z7Bjxw6GJ2/uMTx4eoohL1fNipGRMRCkFpsBnvHRZiaKst9F335/zPDy632GixcvMrx48YLhL+sPhv9sPxnklb6LBgfLmIDUwjQxMjMzg2ghHm62vmP7o0NY2W9y//3/BywpKgZR9/rVdrgtb9/+/erld2HN169/i4Dcd7AACc9KVzfg4bnOzcL0hYGd+QcYi4jXgTGMD8JSYr+505JEDEB6YIGoKCXJ4ZEWz67NyvCBgYP5FxzDAwdJDIQzE/m1pSRZPUB6QS4oqcgXNuDl/MTCyvybgRWoAIa/vasAY2QxEObj/sNSnicIckUJKAfNAIasDpD+DqS/AjEo03wD0t+B9G8gBmVXZqBidiDNBaS5gTQ3iAbia4yUZmeAAAMASQn2TmPBn94AAAAASUVORK5CYII=" title="Toggle warning entries display." onclick=" filterTypes(3, true, 1)" /></td>
+                <td><img width="16" height="16" id="errorImage" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAEEElEQVR42s2Va2wUVRTH/3dmOn1tt8u23b63BW0MQmIgQVJEVOSRSHdJSkRitFb5QqLxizF8UuojxugXY2JQE8MXXx+A2lbUNhIxKG0CJK3YYEu3S9dut/vqe7vdeV3PTMmSZcVW1MRJbu7dc885v7nnP/csw3/8sP8VYKip+agOXnvv1+0v/OuAod1eXrRxLTgTEPvVh/t6OlcVuyqna3u8vMLzAGRRAY9FkVIYfBcD2NzdvmL8ig7XvQePiY6iNte2dVBHRihChCSLCIzMIrGotG3qOv3aPwL4HmniNUe8SP3YA1ZSSRYOHpmEZHfiyi8RbO3+it0xILDvQKRwy/qyPGEKOQ/tR86OPZZdOdcD7dQJTCVyEAovhO//pr3izgB7m3lF6y6kzn0H24cdGXtzLR7kllfhylAcW7pOsb8NCO7Zz+3e7ZASIWh+P2zHT2cCnn4MUrkbc7MJ+IPz2PZtB1s1YNJ78HVWUvSK89ENUHx+GKHxbECrF5KrFjJpMuifRlLV3mjsOPnqqgChnU3c/tRuWoxaX40RmoDt/S8yfGYe3gihqh6CqkKXCnAppmLX92fYioCw9/FOuaHGk7/JDT4ehB6PQbvci+Kzv2X4xdcWQKy9G1B1yDpH//UYwkne1bwQ8/4lIHKghTsONSLZ3QFjegqCKMMYHYHjYigT0GBPA5gGyAZD1+A4nkjE2W0Bkzv2TuQ2lFfKYhjaYmp52+AwfMNw9AVvC+Aqh6QDv8cXMBCdDTy5MFWXBQi76jzaktrpfKcF6s994JJkBVsA/ygcF8YyAeudECvr0wCmGigivU4OB82s3kNz8a4MQCivlNvbnoXu66cguq2mUbsBmJlGzs4mFL70puW78PZRpL48AdFZS76aBQABRCpTMqHgzHgEh5MzLA2IuuqOweVsK3imEfrVYbII4IaxDNBpVlTqQ1dhTE4vH9teSKMYor0iA8A1jiLOcHYihmhy6aOWxdkjFmBScHD7Jy9DO/8DIEpW0jTAPEEkBNt7n0PasNkCaAOXMPdcM4Ti0nSJTAAIINBsiv5pIIjnU/OMRddU98meB7cKbomaWJx6Gc8G+K6RyOOZGtzjgFi9LgtgzrkUNjgzj/75uSiL5pVx2/EXoVw4T3dKpuRaNmCMRP7pVpFLSWT3nwLMkU+l+mxiAixaVs9t77ZC6e0lQczy6FkAJBIAtefCtz6AUFJBjW4ftNEhiI6qtAb8FoCTcn0cDBDAUT2W59nuZncJwHzyJkAzLxANWjMq29LAIAUq5t8BWH4+aSUi11EOpJZPICg3ATIV4XJ8xizR8lcUXlMzRjnccNlg0LU36O11xojDodMGpbB+m4fRuW7NKtkNgms39jVaW/4wEF1SyG4EDi/O1v0BdaNJ3oB8YjwAAAAASUVORK5CYII=" title="Toggle error entries display." onclick=" filterTypes(5, true, 1) " /></td>
+                <td>
+                    <label style="margin-bottom: -4px;" id="lblAutoRefresh" title="Auto-load new entries.">
+                        <span id="spnAutoRefresh"></span><span id="spnAutoRefresh2"></span><span id="spnAutoRefresh3"></span>
+                    </label>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <br />
+    <div id="PartialDiv">
+        @Html.Partial("_traces", Model)
+        <div style="visibility: hidden" class="collapsible"></div>
+    </div>
+</div>
+<p>&nbsp;</p>
+@*@{ Disqus.Initialize("iloopwebapi"); }
+    @Disqus.ShowComments("trace")*@
+<audio id="errorSound" style="display: none" preload="auto">
+    <source src="~/Media/Audio/Error.mp3" type="audio/mpeg" />
+</audio>
+
+<script type="text/javascript">
+    var title = document.title;
+    var units = [];
+    function playError() {
+        var n = document.getElementById("errorSound");
+        n.pause();
+        //n.currentTime = 0;
+        n.play();
+    }
+
+    $(function () {
+        //$('.collapsible').collapsible({});
+        $('.collapsible[set]').each(function (i, d) {
+            units.push($(d));
+        });
+
+        $('.collapsible[set=0]').attr("set", 1);
+        $('.container[set=0]').attr("set", 1);
+        document.title = '[' + $('div.container[set=1]').length + '] ' + title;
+    });
+
+    function setDefaults(k, u, dt, d, un, ut, t) {
+        var data = { key: k, userId: u, deviceTypeId: dt, deviceId: d, userName: un, userTypeId: ut, loginToken: t };
+        window.processUpdate(data);
+    }
+
+    var okDisplay = ($.cookie('okDisplay') || 'true') === 'true'; //1
+    var warningDisplay = ($.cookie('warningDisplay') || 'true') === 'true'; //3
+    var errorDisplay = ($.cookie('errorDisplay') || 'true') === 'true'; //5
+    var aDisplay = ($.cookie('aDisplay') || 'true') === 'true'; //11
+    var iDisplay = ($.cookie('iDisplay') || 'true') === 'true'; //12
+    var wDisplay = ($.cookie('wDisplay') || 'true') === 'true'; //13
+
+    function filterTypes(type, flip, set) {
+        var elems;
+        if (!isNaN(type) && type < 10)
+            elems = $(units).filter(function () { return $(this).attr("filtertype") === type.toString() && $(this).attr("set") === set.toString(); });
+        else if (type.length === 1)
+            elems = $(units).filter(function () { return $(this).attr("dvctype") === type && $(this).attr("set") === set.toString(); });
+        if (flip)
+            switch (type) {
+                case 1:
+                    okDisplay = !okDisplay;
+                    $.cookie('okDisplay', okDisplay, { path: 'Trace' });
+                    break;
+                case 3:
+                    warningDisplay = !warningDisplay;
+                    $.cookie('warningDisplay', warningDisplay, { path: 'Trace' });
+                    break;
+                case 5:
+                    errorDisplay = !errorDisplay;
+                    $.cookie('errorDisplay', errorDisplay, { path: 'Trace' });
+                    break;
+                case "A":
+                    aDisplay = !aDisplay;
+                    $.cookie('aDisplay', aDisplay, { path: 'Trace' });
+                    break;
+                case "I":
+                    iDisplay = !iDisplay;
+                    $.cookie('iDisplay', iDisplay, { path: 'Trace' });
+                    break;
+                case "W":
+                    wDisplay = !wDisplay;
+                    $.cookie('wDisplay', wDisplay, { path: 'Trace' });
+                    break;
+            }
+        $(elems).each(function () {
+            switch (type) {
+                case 1:
+                    $(this).collapsible('close');
+                    okDisplay && ($(this).attr('dvctype') === "" || ($(this).attr('dvctype') === 'A' && aDisplay) || ($(this).attr('dvctype') === 'I' && iDisplay) || ($(this).attr('dvctype') === 'W' && wDisplay)) ? $(this).show() : $(this).hide();
+                    break;
+                case 3:
+                    $(this).collapsible('close');
+                    warningDisplay && ($(this).attr('dvctype') === "" || ($(this).attr('dvctype') === 'A' && aDisplay) || ($(this).attr('dvctype') === 'I' && iDisplay) || ($(this).attr('dvctype') === 'W' && wDisplay)) ? $(this).show() : $(this).hide();
+                    break;
+                case 5:
+                    $(this).collapsible('close');
+                    errorDisplay && ($(this).attr('dvctype') === "" || ($(this).attr('dvctype') === 'A' && aDisplay) || ($(this).attr('dvctype') === 'I' && iDisplay) || ($(this).attr('dvctype') === 'W' && wDisplay)) ? $(this).show() : $(this).hide();
+                    break;
+                case "A":
+                    $(this).collapsible('close');
+                    aDisplay && (($(this).attr('filtertype') === "1" && okDisplay) || ($(this).attr('filtertype') === "3" && warningDisplay) || ($(this).attr('filtertype') === "5" && errorDisplay)) ? $(this).show() : $(this).hide();
+                    break;
+                case "I":
+                    $(this).collapsible('close');
+                    iDisplay && (($(this).attr('filtertype') === "1" && okDisplay) || ($(this).attr('filtertype') === "3" && warningDisplay) || ($(this).attr('filtertype') === "5" && errorDisplay)) ? $(this).show() : $(this).hide();
+                    break;
+                case "W":
+                    $(this).collapsible('close');
+                    wDisplay && (($(this).attr('filtertype') === "1" && okDisplay) || ($(this).attr('filtertype') === "3" && warningDisplay) || ($(this).attr('filtertype') === "5" && errorDisplay)) ? $(this).show() : $(this).hide();
+                    break;
+            }
+        });
+        $('#okImage').fadeTo("medium", okDisplay ? 1 : 0.5);
+        $('#warningImage').fadeTo("medium", warningDisplay ? 1 : 0.5);
+        $('#errorImage').fadeTo("medium", errorDisplay ? 1 : 0.5);
+        $('#aImage').fadeTo("medium", aDisplay ? 1 : 0.5);
+        $('#iImage').fadeTo("medium", iDisplay ? 1 : 0.5);
+        $('#wImage').fadeTo("medium", wDisplay ? 1 : 0.5);
+
+        var hasError = function () {
+            for (var i = 0, len = $(elems).length; i < len; i++)
+                if ($(elems[i]).attr("filtertype") === "5")
+                    return true;
+            return false;
+        }
+        if (hasError()) {
+            playError();
+        }
+    }
+
+    function bindArrow(d) {
+        $(d).click(function () {
+            var elem = $(this).parent("div").find("[name=copyTarget]");
+            var rImg = "/Images/ArrowRight.png";
+            var dImg = "/Images/ArrowDown.png";
+            $(elem).slideToggle('slow');
+            var im = $(this).find("img");
+            if ($(im).attr('src') === rImg) {
+                $(im).attr('title', 'Collapse.');
+                $(im).attr('src', dImg);
+            } else {
+                $(im).attr('title', 'Expand.');
+                $(im).attr('src', rImg);
+            }
+        });
+    }
+
+    function changeAutoRefreshDisplay() {
+        var flt = $('#spnAutoRefresh3');
+        var lbl = $('#lblAutoRefresh');
+        if (autoRefresh) {
+            $(lbl).css('background', 'rgb(22, 122, 198)');
+            $(flt).css('float', 'right');
+        } else {
+            $(flt).css('float', 'left');
+            $(lbl).css('background', 'rgb(184, 184, 184)');
+        }
+    }
+
+    var autoRefresh = ($.cookie('autoRefresh') || 'true') == 'true';
+    //$.cookie('autoRefresh', autoRefresh);
+    var autoRefreshInterval = 5;
+
+    $(document).ready(function () {
+        changeAutoRefreshDisplay();
+        $('#lblAutoRefresh').click(function () {
+            if (!autoRefresh) {
+                autoRefresh = true;
+                //refresh();
+            } else {
+                autoRefresh = false;
+            }
+            $.cookie('autoRefresh', autoRefresh, { path: 'Trace' });
+            changeAutoRefreshDisplay();
+        });
+
+        var lock = false;
+        var refresh = function () {
+            var now = new Date();
+            if (!lock) {
+                if (autoRefresh) {
+                    lock = true;
+                    var elemTime = $('input[name=time]').first();
+                    var time = $(elemTime).val();
+                    var rnd = $(elemTime).attr("title");
+                    $.ajax({
+                        url: "Trace",
+                        contentType: 'application/json; charset=utf-8',
+                        data: "time=" + time + "&rnd=" + rnd,
+                        dataType: "html",
+                        success: function (data) {
+                            if (data.length <= 0)
+                                return;
+                            $(".collapsible").first().before($(data).hide());
+                            var newEntries = $('.collapsible[set=0]');
+                            newEntries.each(function (i, d) {
+                                $(d).collapsible({});
+                            });
+                            units.push(newEntries);
+                            filterTypes(1, false, 0);
+                            filterTypes(3, false, 0);
+                            filterTypes(5, false, 0);
+                            filterTypes('A', false, 0);
+                            filterTypes('I', false, 0);
+                            filterTypes('W', false, 0);
+                            var newBtns = $('.container[set=0]');
+                            if (newBtns.get(0) !== undefined)
+                                setNewCopy(newBtns);
+                            newEntries.each(function (i, d) { $(d).attr("set", 1); });
+                            $('.container[set=0]').find('[name=displayArrow]').each(function (i1, d1) {
+                                bindArrow(d1);
+                            });
+                            $('.container[set=0]').each(function (i, d) { $(d).attr("set", 1); });
+                            document.title = '[' + $('div.container[set=1]').length + '] ' + title;
+                        },
+                        error: function (e) {
+                            console.log(e);
+                        },
+                        complete: function () {
+                            lock = false;
+                        }
+                    });
+                }
+            }
+            var interval = autoRefreshInterval - (now.getSeconds() % autoRefreshInterval) - (now.getMilliseconds() / 1000);
+            setTimeout(refresh, interval * 1000);
+        };
+
+        $(function () {
+            refresh();
+            filterTypes(1, false, 1);
+            filterTypes(3, false, 1);
+            filterTypes(5, false, 1);
+            filterTypes('A', false, 1);
+            filterTypes('I', false, 1);
+            filterTypes('W', false, 1);
+            $('.container').find('[name=displayArrow]').each(function (i, d) {
+                bindArrow(d);
+            });
+            var btns = $("[name=copy-button]");
+            if (btns.get(0) !== undefined)
+                setupCopyclient(btns);
+        });
+    });
+</script>

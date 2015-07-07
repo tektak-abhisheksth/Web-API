@@ -1,0 +1,399 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4CFF111E-9117-46BD-9259-7093D26B226B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Entity</RootNamespace>
+    <AssemblyName>Entity</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Academic.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AcademicConcentration.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AcademicInstitute.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ChatNetwork.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="City.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CompanyDepartment.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CompanyDepartmentEmployee.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CompanyProductAndService.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CompanyPSCategory.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CompanyPSPaymentType.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CompanyPSPrerequisite.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CompanyPSPrice.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CompanyPSRoom.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CompanyPSRoomType.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CompanyPSSeasonable.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CompanyPSSupplement.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CompanyPSTable.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CompanyPSTableConnectable.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CompanyService.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CompanyServiceClient.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CompanyServiceEnlistedEquipment.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CompanyServiceEnlistedFacility.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CompanyServiceEquipment.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CompanyServiceEventType.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CompanyServiceFacility.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CompanyServiceResponsibleUser.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CompanyServiceTimeSchedule.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CompanyServiceTimeType.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CompanyUserRating.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Country.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Department.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeType.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmployerType.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Event.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EventAttendee.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EventDetail.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EventType.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FNCONTACTSDETAILS_Result.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FNGETADDRESSBOOKFRIENDS_MOB_Result.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FNGETCONTACTSUGGESTIONS_Result.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FNGETPROFILEINFORMATIONS_Result.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FNGETUSERSINFO_Result.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FNGETUSERTITLE_Result.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Friend.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="iLoopEntity.Context.cs">
+      <DependentUpon>iLoopEntity.Context.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="iLoopEntity.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="iLoopEntity.Designer.cs">
+      <DependentUpon>iLoopEntity.edmx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Industry.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Language.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Location.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LocationTemporary.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LocationType.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MessageEntryContact.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MessageEntryGroup.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MessageFolder.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MessageRule.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Nationality.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Notification.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NotificationType.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OwnershipType.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Position.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PROC_BASIC_SEARCH_Result.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PROC_CATEGORY_LIST_Result.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PROC_GETWORKSCHEDULE_Result.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PROC_GET_NOTIFANDREQ_MOB_Result.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PROC_MUTUAL_FRIENDS_Result.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PROC_PROFILE_VIEW_DETAIL_Result.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PROC_PROFILE_VIEW_PANEL_Result.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PROC_PROFILE_VIEW_SUMMARY_Result.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PROC_RESPOND_CONTACT_SUGGESTION_Result.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PROC_SUGGEST_CONTACTS_Result.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PROC_THUMBS_FOR_SKILL_SUMMARY_Result.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PROC_UPSERT_CONTACTS_Result.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PROC_UPSERT_NOTIFICATION_Result.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PROC_UPSERT_REQUEST_Result.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PROC_USERLOGIN_Result.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Proficiency.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RelationshipStatu.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RelationShipType.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Religion.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Request.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RequestType.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SettingCompany.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SettingPerson.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SettingReferenceCompany.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SettingReferencePerson.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SettingTypeCompany.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SettingTypePerson.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkillType.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Status.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StatusType.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ThumbsForUserSkill.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Town.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserCategory.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserCategoryFriend.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserEventAvailability.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserInfo.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserInfoCompany.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserInfoPerson.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserLanguage.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserLocation.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserLogin.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserMobileContact.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserMultiLogin.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserSkill.cs">
+      <DependentUpon>iLoopEntity.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="iLoopEntity.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>iLoopEntity.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="iLoopEntity.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>iLoopEntity.edmx</DependentUpon>
+      <LastGenOutput>iLoopEntity.Context.cs</LastGenOutput>
+    </None>
+    <None Include="iLoopEntity.edmx.diagram">
+      <DependentUpon>iLoopEntity.edmx</DependentUpon>
+    </None>
+    <None Include="iLoopEntity.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>iLoopEntity.edmx</DependentUpon>
+      <LastGenOutput>iLoopEntity.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,259 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FD724624-8969-4C47-BC33-F6912EFCC85D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TekTak.iLoop</RootNamespace>
+    <AssemblyName>Service</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="Thrift">
+      <HintPath>..\packages\Thrift.0.9.1.3\lib\net35\Thrift.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Account\AccountRepository.cs" />
+    <Compile Include="Account\IAccountRepository.cs" />
+    <Compile Include="Category\CategoryRepository.cs" />
+    <Compile Include="Category\ICategoryRepository.cs" />
+    <Compile Include="Chat\ChatRepository.cs" />
+    <Compile Include="Chat\IChatRepository.cs" />
+    <Compile Include="Data\DataRepository.cs" />
+    <Compile Include="Data\IDataRepository.cs" />
+    <Compile Include="Helper\Helper.cs" />
+    <Compile Include="Inbox\InboxRepository.cs" />
+    <Compile Include="Inbox\IInboxRepository.cs" />
+    <Compile Include="Helper\Extensions.cs" />
+    <Compile Include="Friend\FriendRepository.cs" />
+    <Compile Include="Friend\IFriendRepository.cs" />
+    <Compile Include="Kauwa\AwardAndHonor.cs" />
+    <Compile Include="Kauwa\AwardAndHonorResponse.cs" />
+    <Compile Include="Kauwa\BasicSearch.cs" />
+    <Compile Include="Kauwa\BasicSearchList.cs" />
+    <Compile Include="Kauwa\BusinessBasicDetails.cs" />
+    <Compile Include="Kauwa\ChatBlockedInstance.cs" />
+    <Compile Include="Kauwa\ChatException.cs" />
+    <Compile Include="Kauwa\ChatGroup.cs" />
+    <Compile Include="Kauwa\ChatGroupException.cs" />
+    <Compile Include="Kauwa\ChatGroupService.cs" />
+    <Compile Include="Kauwa\ChatInstancePullInfo.cs" />
+    <Compile Include="Kauwa\ChatMember.cs" />
+    <Compile Include="Kauwa\ChatMessagePull.cs" />
+    <Compile Include="Kauwa\ChatMutedInstance.cs" />
+    <Compile Include="Kauwa\ChatMutedUser.cs" />
+    <Compile Include="Kauwa\ChatPendingGroupMember.cs" />
+    <Compile Include="Kauwa\ChatService.cs" />
+    <Compile Include="Kauwa\ChatUserBlocked.cs" />
+    <Compile Include="Kauwa\ChatUserBlockedInstance.cs" />
+    <Compile Include="Kauwa\ChatUserInfo.cs" />
+    <Compile Include="Kauwa\ChatUserInfoException.cs" />
+    <Compile Include="Kauwa\ChatUserInfoService.cs" />
+    <Compile Include="Kauwa\City.cs" />
+    <Compile Include="Kauwa\CompanyEmployeeInfo.cs" />
+    <Compile Include="Kauwa\CompanyEmployeeInfoList.cs" />
+    <Compile Include="Kauwa\CompanyFamily.cs" />
+    <Compile Include="Kauwa\CompanyReview.cs" />
+    <Compile Include="Kauwa\CompanyReviewList.cs" />
+    <Compile Include="Kauwa\CompanyTree.cs" />
+    <Compile Include="Kauwa\CompanyTreeResponse.cs" />
+    <Compile Include="Kauwa\Concentration.cs" />
+    <Compile Include="Kauwa\Contact.cs" />
+    <Compile Include="Kauwa\ContactSuggestions.cs" />
+    <Compile Include="Kauwa\Country.cs" />
+    <Compile Include="Kauwa\DbStatus.cs" />
+    <Compile Include="Kauwa\Degree.cs" />
+    <Compile Include="Kauwa\Department.cs" />
+    <Compile Include="Kauwa\DepartmentEmployees.cs" />
+    <Compile Include="Kauwa\DepartmentResponse.cs" />
+    <Compile Include="Kauwa\Elif.cs" />
+    <Compile Include="Kauwa\ElifException.cs" />
+    <Compile Include="Kauwa\ElifImageCrop.cs" />
+    <Compile Include="Kauwa\ElifImageDetection.cs" />
+    <Compile Include="Kauwa\ElifMeta.cs" />
+    <Compile Include="Kauwa\ElifService.cs" />
+    <Compile Include="Kauwa\EmployeeList.cs" />
+    <Compile Include="Kauwa\EmployeeRatingResponse.cs" />
+    <Compile Include="Kauwa\EmployeeRatings.cs" />
+    <Compile Include="Kauwa\EmployeeResponse.cs" />
+    <Compile Include="Kauwa\Employees.cs" />
+    <Compile Include="Kauwa\EmployeeWorkSchedule.cs" />
+    <Compile Include="Kauwa\EmployerType.cs" />
+    <Compile Include="Kauwa\Employment.cs" />
+    <Compile Include="Kauwa\EmploymentRequest.cs" />
+    <Compile Include="Kauwa\EmploymentRequestResponse.cs" />
+    <Compile Include="Kauwa\ErrorCode.cs" />
+    <Compile Include="Kauwa\Friend.cs" />
+    <Compile Include="Kauwa\FriendList.cs" />
+    <Compile Include="Kauwa\FriendReqNotification.cs" />
+    <Compile Include="Kauwa\GearUp.cs" />
+    <Compile Include="Kauwa\GetDataParam.cs" />
+    <Compile Include="Kauwa\GetDataResponse.cs" />
+    <Compile Include="Kauwa\GroupPull.cs" />
+    <Compile Include="Kauwa\HelloKauwa.cs" />
+    <Compile Include="Kauwa\Inbox.cs" />
+    <Compile Include="Kauwa\InboxException.cs" />
+    <Compile Include="Kauwa\InboxRule.cs" />
+    <Compile Include="Kauwa\InboxRuleService.cs" />
+    <Compile Include="Kauwa\InboxService.cs" />
+    <Compile Include="Kauwa\Industry.cs" />
+    <Compile Include="Kauwa\InstanceOperation.cs" />
+    <Compile Include="Kauwa\KauwaMail.cs" />
+    <Compile Include="Kauwa\KauwaMailException.cs" />
+    <Compile Include="Kauwa\KauwaMailService.cs" />
+    <Compile Include="Kauwa\Language.cs" />
+    <Compile Include="Kauwa\MobileContact.cs" />
+    <Compile Include="Kauwa\MutualFriend.cs" />
+    <Compile Include="Kauwa\MutualFriendResponse.cs" />
+    <Compile Include="Kauwa\Nationality.cs" />
+    <Compile Include="Kauwa\NlpException.cs" />
+    <Compile Include="Kauwa\NlpService.cs" />
+    <Compile Include="Kauwa\NotificationException.cs" />
+    <Compile Include="Kauwa\NotificationMob.cs" />
+    <Compile Include="Kauwa\NotificationMobList.cs" />
+    <Compile Include="Kauwa\NotificationService.cs" />
+    <Compile Include="Kauwa\NotificationType.cs" />
+    <Compile Include="Kauwa\OwnershipType.cs" />
+    <Compile Include="Kauwa\ProfileView.cs" />
+    <Compile Include="Kauwa\ProfileViewResponse.cs" />
+    <Compile Include="Kauwa\Push.cs" />
+    <Compile Include="Kauwa\PushException.cs" />
+    <Compile Include="Kauwa\PushService.cs" />
+    <Compile Include="Kauwa\RelationshipStatus.cs" />
+    <Compile Include="Kauwa\RelationShipType.cs" />
+    <Compile Include="Kauwa\Religion.cs" />
+    <Compile Include="Kauwa\SearchException.cs" />
+    <Compile Include="Kauwa\SearchQuery.cs" />
+    <Compile Include="Kauwa\SearchResponse.cs" />
+    <Compile Include="Kauwa\SearchService.cs" />
+    <Compile Include="Kauwa\Session.cs" />
+    <Compile Include="Kauwa\SessionException.cs" />
+    <Compile Include="Kauwa\SessionService.cs" />
+    <Compile Include="Kauwa\SettingPerson.cs" />
+    <Compile Include="Kauwa\SettingService.cs" />
+    <Compile Include="Kauwa\SettingServiceException.cs" />
+    <Compile Include="Kauwa\SettingTypePerson.cs" />
+    <Compile Include="Kauwa\SizedCodes.cs" />
+    <Compile Include="Kauwa\Skill.cs" />
+    <Compile Include="Kauwa\SkillResponse.cs" />
+    <Compile Include="Kauwa\Status.cs" />
+    <Compile Include="Kauwa\StatusType.cs" />
+    <Compile Include="Kauwa\SuggestContactResponse.cs" />
+    <Compile Include="Kauwa\Topic.cs" />
+    <Compile Include="Kauwa\User.cs" />
+    <Compile Include="Kauwa\UserAcademicResponse.cs" />
+    <Compile Include="Kauwa\UserAcademics.cs" />
+    <Compile Include="Kauwa\UserCategory.cs" />
+    <Compile Include="Kauwa\UserContactDetails.cs" />
+    <Compile Include="Kauwa\UserContactDetailsResponse.cs" />
+    <Compile Include="Kauwa\UserContactSettings.cs" />
+    <Compile Include="Kauwa\UserException.cs" />
+    <Compile Include="Kauwa\UserInfo.cs" />
+    <Compile Include="Kauwa\UserInfoCompany.cs" />
+    <Compile Include="Kauwa\UserInfoPerson.cs" />
+    <Compile Include="Kauwa\UserMobileContacts.cs" />
+    <Compile Include="Kauwa\UserSearchQuery.cs" />
+    <Compile Include="Kauwa\UserSearchResult.cs" />
+    <Compile Include="Kauwa\UserService.cs" />
+    <Compile Include="Kauwa\WebOnlyFriend.cs" />
+    <Compile Include="Kauwa\WebOnlyFriendResponse.cs" />
+    <Compile Include="Media\IMediaRepository.cs" />
+    <Compile Include="Media\MediaRepository.cs" />
+    <Compile Include="Notification\INotificationRepository.cs" />
+    <Compile Include="Notification\NotificationRepository.cs" />
+    <Compile Include="Profile\IProfileBusinessRepository.cs" />
+    <Compile Include="Profile\IProfilePersonalRepository.cs" />
+    <Compile Include="Profile\IProfileRepository.cs" />
+    <Compile Include="Profile\ProfileBusinessRepository.cs" />
+    <Compile Include="Profile\ProfilePersonalRepository.cs" />
+    <Compile Include="Profile\ProfileRepository.cs" />
+    <Compile Include="Sealed\Account\AccountRepositorySealed.cs" />
+    <Compile Include="Sealed\Account\IAccountRepositorySealed.cs" />
+    <Compile Include="Sealed\Category\CategoryRepositorySealed.cs" />
+    <Compile Include="Sealed\Category\ICategoryRepositorySealed.cs" />
+    <Compile Include="Sealed\Chat\ChatRepositorySealed.cs" />
+    <Compile Include="Sealed\Chat\IChatRepositorySealed.cs" />
+    <Compile Include="Sealed\Data\DataRepositorySealed.cs" />
+    <Compile Include="Sealed\Data\IDataRepositorySealed.cs" />
+    <Compile Include="Sealed\Friend\FriendRepositorySealed.cs" />
+    <Compile Include="Sealed\Friend\IFriendRepositorySealed.cs" />
+    <Compile Include="Sealed\Inbox\IInboxRepositorySealed.cs" />
+    <Compile Include="Sealed\Inbox\InboxRepositorySealed.cs" />
+    <Compile Include="Sealed\Media\IMediaRepositorySealed.cs" />
+    <Compile Include="Sealed\Media\MediaRepositorySealed.cs" />
+    <Compile Include="Sealed\Notification\INotificationRepositorySealed.cs" />
+    <Compile Include="Sealed\Notification\NotificationRepositorySealed.cs" />
+    <Compile Include="Sealed\Profile\IProfileBusinessRepositorySealed.cs" />
+    <Compile Include="Sealed\Profile\IProfilePersonalRepositorySealed.cs" />
+    <Compile Include="Sealed\Profile\IProfileRepositorySealed.cs" />
+    <Compile Include="Sealed\Profile\ProfileBusinessRepositorySealed.cs" />
+    <Compile Include="Sealed\Profile\ProfilePersonalRepositorySealed.cs" />
+    <Compile Include="Sealed\Profile\ProfileRepositorySealed.cs" />
+    <Compile Include="Sealed\Search\ISearchRepositorySealed.cs" />
+    <Compile Include="Sealed\Search\SearchRepositorySealed.cs" />
+    <Compile Include="Sealed\Setting\ISettingRepositorySealed.cs" />
+    <Compile Include="Sealed\Setting\SettingRepositorySealed.cs" />
+    <Compile Include="Search\ISearchRepository.cs" />
+    <Compile Include="Search\SearchRepository.cs" />
+    <Compile Include="Services.cs" />
+    <Compile Include="Setting\ISettingRepository.cs" />
+    <Compile Include="Setting\SettingRepository.cs" />
+    <Compile Include="UOW\IUnitOfWork.cs" />
+    <Compile Include="UOW\UnitOfWork.cs" />
+    <Compile Include="ServiceClientAdapter.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{c2bb44d5-c122-439d-8260-59a84adf9875}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utility\Utility.csproj">
+      <Project>{65ea7d0a-aa6b-44e0-8e65-215b6c1001c4}</Project>
+      <Name>Utility</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
